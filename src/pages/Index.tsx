@@ -1,15 +1,22 @@
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { wilayas } from "@/data/algeria";
-import productVideo from "@/assets/g16.mp4.asset.json";
-import themePreview from "@/assets/theme_preview.png.asset.json";
-import themesGallery from "@/assets/themes_gallery.png.asset.json";
-import heroBuild1 from "@/assets/hero_build_1.png.asset.json";
-import heroBuild2 from "@/assets/hero_build_2.png.asset.json";
-import dimSize from "@/assets/dim_size.png.asset.json";
-import dimBack from "@/assets/dim_back.png.asset.json";
-import dimBox from "@/assets/dim_box.png.asset.json";
+import themePreview800 from "@/assets/theme_preview_800.webp.asset.json";
+import themePreview1600 from "@/assets/theme_preview_1600.webp.asset.json";
+import themesGallery800 from "@/assets/themes_gallery_800.webp.asset.json";
+import themesGallery1600 from "@/assets/themes_gallery_1600.webp.asset.json";
+import heroBuild1_800 from "@/assets/hero_build_1_800.webp.asset.json";
+import heroBuild1_1600 from "@/assets/hero_build_1_1600.webp.asset.json";
+import heroBuild2_800 from "@/assets/hero_build_2_800.webp.asset.json";
+import heroBuild2_1600 from "@/assets/hero_build_2_1600.webp.asset.json";
+import dimSize800 from "@/assets/dim_size_800.webp.asset.json";
+import dimSize1600 from "@/assets/dim_size_1600.webp.asset.json";
+import dimBack800 from "@/assets/dim_back_800.webp.asset.json";
+import dimBack1600 from "@/assets/dim_back_1600.webp.asset.json";
+import dimBox800 from "@/assets/dim_box_800.webp.asset.json";
+import dimBox1600 from "@/assets/dim_box_1600.webp.asset.json";
 import SetupCarousel from "@/components/SetupCarousel";
+import LazyImage from "@/components/LazyImage";
 import {
   Select,
   SelectContent,
@@ -138,14 +145,33 @@ const Index = () => {
           {/* Product video */}
           <div className="mx-auto max-w-2xl mb-6 sm:mb-8">
             <video
-              src={productVideo.url}
               autoPlay
               muted
               loop
               playsInline
-              controls
+              preload="metadata"
               className="w-full aspect-video rounded-2xl border border-white/10 shadow-card video-glow object-cover"
-            />
+            >
+              <source src="https://mediag16.aktechvault.com/g16.mp4" type="video/mp4" />
+            </video>
+          </div>
+
+          {/* Real build showcase — موضوعة بعد العنوان والفيديو مباشرة */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-3xl mx-auto mb-8 sm:mb-10">
+            {[
+              { s: heroBuild1_800, l: heroBuild1_1600, alt: "Setup حقيقي 1" },
+              { s: heroBuild2_800, l: heroBuild2_1600, alt: "Setup حقيقي 2" },
+            ].map((it) => (
+              <div key={it.alt} className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
+                <LazyImage
+                  src800={it.s}
+                  src1600={it.l}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  alt={it.alt}
+                  className="w-full h-auto object-contain cursor-zoom-in"
+                />
+              </div>
+            ))}
           </div>
 
           <div className="flex justify-center mb-12 sm:mb-16">
@@ -242,14 +268,6 @@ const Index = () => {
               ))}
             </div>
 
-            {/* Real build showcase */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-2">
-              {[heroBuild1.url, heroBuild2.url].map((src, idx) => (
-                <div key={src} className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
-                  <img src={src} alt={`Setup حقيقي ${idx + 1}`} loading="lazy" className="w-full h-auto object-contain cursor-zoom-in" />
-                </div>
-              ))}
-            </div>
 
             <div className="flex flex-col items-center gap-4 pt-4">
 
@@ -326,6 +344,11 @@ const Index = () => {
             </p>
           </div>
 
+          {/* Setup gallery — مباشرة بعد العنوان */}
+          <div className="mb-10 sm:mb-14">
+            <SetupCarousel />
+          </div>
+
           <div className="grid lg:grid-cols-3 gap-5 sm:gap-6">
             {[
               {
@@ -372,11 +395,6 @@ const Index = () => {
             ))}
           </div>
 
-          {/* Setup gallery — auto-sliding with counter + zoom */}
-          <div className="mt-10 sm:mt-14">
-            <SetupCarousel />
-          </div>
-
           <div className="text-center pt-10 sm:pt-12">
             <CTAButton />
           </div>
@@ -405,18 +423,18 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
-              <img
-                src={themePreview.url}
+              <LazyImage
+                src800={themePreview800}
+                src1600={themePreview1600}
                 alt="معاينة برنامج التحكم في الثيمات"
-                loading="lazy"
                 className="w-full h-auto object-contain cursor-zoom-in"
               />
             </div>
             <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
-              <img
-                src={themesGallery.url}
+              <LazyImage
+                src800={themesGallery800}
+                src1600={themesGallery1600}
                 alt="مجموعة ثيمات وخلفيات جاهزة"
-                loading="lazy"
                 className="w-full h-auto object-contain cursor-zoom-in"
               />
             </div>
@@ -443,6 +461,26 @@ const Index = () => {
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-black">
               الأبعاد و <span className="text-gradient">طريقة التركيب</span>
             </h2>
+          </div>
+
+          {/* Images — مباشرة بعد العنوان */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 max-w-5xl mx-auto mb-10 sm:mb-12">
+            {[
+              { s: dimSize800, l: dimSize1600, label: "📐 الأبعاد: 253 × 68 × 13 مم" },
+              { s: dimBack800, l: dimBack1600, label: "🔩 ظهر معدني بفتحات تثبيت متعددة" },
+              { s: dimBox800, l: dimBox1600, label: "📦 محتويات العلبة: شاشة + كابلات + حوامل" },
+            ].map((it) => (
+              <div key={it.label} className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
+                <LazyImage
+                  src800={it.s}
+                  src1600={it.l}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  alt={it.label}
+                  className="w-full h-56 sm:h-64 object-cover cursor-zoom-in"
+                />
+                <div className="p-3 sm:p-4 text-center text-foreground/80 text-sm font-bold">{it.label}</div>
+              </div>
+            ))}
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 max-w-4xl mx-auto">
@@ -513,18 +551,6 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 max-w-5xl mx-auto mt-8 sm:mt-10">
-            {[
-              { src: dimSize.url, label: "📐 الأبعاد: 253 × 68 × 13 مم" },
-              { src: dimBack.url, label: "🔩 ظهر معدني بفتحات تثبيت متعددة" },
-              { src: dimBox.url, label: "📦 محتويات العلبة: شاشة + كابلات + حوامل" },
-            ].map((it) => (
-              <div key={it.label} className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
-                <img src={it.src} alt={it.label} loading="lazy" className="w-full h-56 sm:h-64 object-cover cursor-zoom-in" />
-                <div className="p-3 sm:p-4 text-center text-foreground/80 text-sm font-bold">{it.label}</div>
-              </div>
-            ))}
-          </div>
 
 
           <div className="text-center mt-10 sm:mt-12">
