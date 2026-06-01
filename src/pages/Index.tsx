@@ -4,6 +4,8 @@ import { wilayas } from "@/data/algeria";
 import productVideo from "@/assets/g16.mp4.asset.json";
 import themePreview from "@/assets/theme_preview.png.asset.json";
 import themesGallery from "@/assets/themes_gallery.png.asset.json";
+import heroBuild1 from "@/assets/hero_build_1.png.asset.json";
+import heroBuild2 from "@/assets/hero_build_2.png.asset.json";
 import dimSize from "@/assets/dim_size.png.asset.json";
 import dimBack from "@/assets/dim_back.png.asset.json";
 import dimBox from "@/assets/dim_box.png.asset.json";
@@ -236,8 +238,17 @@ const Index = () => {
               ))}
             </div>
 
+            {/* Real build showcase */}
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-2">
+              {[heroBuild1.url, heroBuild2.url].map((src, idx) => (
+                <div key={src} className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
+                  <img src={src} alt={`Setup حقيقي ${idx + 1}`} loading="lazy" className="w-full h-48 sm:h-72 object-cover cursor-zoom-in" />
+                </div>
+              ))}
+            </div>
 
             <div className="flex flex-col items-center gap-4 pt-4">
+
               <div
                 style={{
                   background: "linear-gradient(135deg, rgba(0,200,255,0.08), rgba(139,92,246,0.08))",
@@ -484,14 +495,29 @@ const Index = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl mb-4 font-black text-white">احصل عليها الآن</h2>
 
             {/* Dynamic price breakdown */}
-            <div className="mb-6 space-y-1.5">
-              <div className="text-sm text-slate-400">سعر المنتج: {productPrice.toLocaleString()} دج</div>
+            <div className="mb-6 space-y-2">
+              <div
+                className="rounded-xl px-4 py-3 flex items-center justify-between"
+                style={{
+                  background: "linear-gradient(135deg, rgba(0,200,255,0.10), rgba(139,92,246,0.10))",
+                  border: "1px solid rgba(0,200,255,0.3)",
+                }}
+              >
+                <span className="text-sm sm:text-base font-bold text-slate-200">سعر المنتج</span>
+                <span className="text-xl sm:text-2xl font-black text-[#00c8ff]" style={{ textShadow: "0 0 18px rgba(0,200,255,0.5)" }}>
+                  {productPrice.toLocaleString()} دج
+                </span>
+              </div>
               {deliveryPrice !== null && (
-                <div className="text-sm text-slate-400">التوصيل: +{deliveryPrice.toLocaleString()} دج</div>
+                <div className="rounded-xl px-4 py-3 flex items-center justify-between bg-white/5 border border-white/10">
+                  <span className="text-sm sm:text-base font-semibold text-slate-300">التوصيل</span>
+                  <span className="text-lg sm:text-xl font-extrabold text-white">+{deliveryPrice.toLocaleString()} دج</span>
+                </div>
               )}
               {totalPrice !== null && (
                 <>
                   <div className="my-3 h-px bg-white/10" />
+                  <div className="text-xs sm:text-sm text-slate-400 font-bold">المجموع الكلي</div>
                   <div className="text-5xl sm:text-6xl font-black text-gradient leading-tight">
                     {totalPrice.toLocaleString()} دج
                   </div>
