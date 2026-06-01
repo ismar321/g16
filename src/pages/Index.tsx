@@ -1,15 +1,22 @@
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { wilayas } from "@/data/algeria";
-import productVideo from "@/assets/g16.mp4.asset.json";
-import themePreview from "@/assets/theme_preview.png.asset.json";
-import themesGallery from "@/assets/themes_gallery.png.asset.json";
-import heroBuild1 from "@/assets/hero_build_1.png.asset.json";
-import heroBuild2 from "@/assets/hero_build_2.png.asset.json";
-import dimSize from "@/assets/dim_size.png.asset.json";
-import dimBack from "@/assets/dim_back.png.asset.json";
-import dimBox from "@/assets/dim_box.png.asset.json";
+import themePreview800 from "@/assets/theme_preview_800.webp.asset.json";
+import themePreview1600 from "@/assets/theme_preview_1600.webp.asset.json";
+import themesGallery800 from "@/assets/themes_gallery_800.webp.asset.json";
+import themesGallery1600 from "@/assets/themes_gallery_1600.webp.asset.json";
+import heroBuild1_800 from "@/assets/hero_build_1_800.webp.asset.json";
+import heroBuild1_1600 from "@/assets/hero_build_1_1600.webp.asset.json";
+import heroBuild2_800 from "@/assets/hero_build_2_800.webp.asset.json";
+import heroBuild2_1600 from "@/assets/hero_build_2_1600.webp.asset.json";
+import dimSize800 from "@/assets/dim_size_800.webp.asset.json";
+import dimSize1600 from "@/assets/dim_size_1600.webp.asset.json";
+import dimBack800 from "@/assets/dim_back_800.webp.asset.json";
+import dimBack1600 from "@/assets/dim_back_1600.webp.asset.json";
+import dimBox800 from "@/assets/dim_box_800.webp.asset.json";
+import dimBox1600 from "@/assets/dim_box_1600.webp.asset.json";
 import SetupCarousel from "@/components/SetupCarousel";
+import LazyImage from "@/components/LazyImage";
 import {
   Select,
   SelectContent,
