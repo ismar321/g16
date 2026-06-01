@@ -4,6 +4,9 @@ import { wilayas } from "@/data/algeria";
 import productVideo from "@/assets/g16.mp4.asset.json";
 import themePreview from "@/assets/theme_preview.png.asset.json";
 import themesGallery from "@/assets/themes_gallery.png.asset.json";
+import dimSize from "@/assets/dim_size.png.asset.json";
+import dimBack from "@/assets/dim_back.png.asset.json";
+import dimBox from "@/assets/dim_box.png.asset.json";
 import SetupCarousel from "@/components/SetupCarousel";
 import {
   Select,
@@ -448,6 +451,18 @@ const Index = () => {
               </Card>
             ))}
           </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 max-w-5xl mx-auto mt-8 sm:mt-10">
+            {[
+              { src: dimSize.url, label: "📐 الأبعاد: 253 × 68 × 13 مم" },
+              { src: dimBack.url, label: "🔩 ظهر معدني بفتحات تثبيت متعددة" },
+              { src: dimBox.url, label: "📦 محتويات العلبة: شاشة + كابلات + حوامل" },
+            ].map((it) => (
+              <div key={it.label} className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
+                <img src={it.src} alt={it.label} loading="lazy" className="w-full h-56 sm:h-64 object-cover cursor-zoom-in" />
+                <div className="p-3 sm:p-4 text-center text-foreground/80 text-sm font-bold">{it.label}</div>
+              </div>
+            ))}
 
           <div className="text-center mt-10 sm:mt-12">
             <CTAButton />
