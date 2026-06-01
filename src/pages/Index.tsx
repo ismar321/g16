@@ -147,32 +147,32 @@ const Index = () => {
               {[
                 {
                   icon: "🖥️",
-                  title: 'شاشة IPS LCD 9.16 بوصة',
-                  text: "عرض واضح وألوان حية لمعلومات Setup تاعك في الوقت الحقيقي",
+                  title: "إضافة فعلية للـ Setup تاعك",
+                  text: "مش مجرد إكسسوار — شاشة حقيقية تضيف قيمة عملية وبصرية للـ Setup تاعك",
                   border: "rgba(0,200,255,0.3)",
                   borderHover: "rgba(0,200,255,0.6)",
                 },
                 {
                   icon: "🏆",
-                  title: "خامات معدن CNC",
-                  text: "فينيشن فاخر وبناء متين يضيف لمسة Premium حقيقية للـ Setup",
+                  title: "خامات CNC ممتازة",
+                  text: "مصنوعة من معدن CNC عالي الجودة — متينة، فينيشنها ممتاز، وتبقى شكلها زين مع الوقت",
                   border: "rgba(139,92,246,0.3)",
                   borderHover: "rgba(139,92,246,0.6)",
                 },
                 {
-                  icon: "⚡",
-                  title: "Smooth & Responsive",
-                  text: "استجابة سريعة بدون تأخير أو بطء — تجربة استخدام سلسة 100%",
+                  icon: "🎨",
+                  title: "خلفيات حسب مزاجك",
+                  text: "غيّر الثيم متى تحب، وصنع خلفياتك الخاصة — كل يوم Setup بشكل جديد",
                   border: "rgba(0,200,255,0.3)",
                   borderHover: "rgba(0,200,255,0.6)",
                 },
                 {
-                  icon: "🎨",
-                  title: "3 إصدارات متاحة",
-                  text: "اختر بين: White ⬜ / Black ⬛ / ARGB ✨",
+                  icon: "🛠️",
+                  title: "برنامج تعديل سهل وممتاز",
+                  text: "واجهة بسيطة تخليك تخصص كل شيء بسهولة — بدون تعقيد ولا خبرة تقنية",
                   border: "rgba(139,92,246,0.3)",
                   borderHover: "rgba(139,92,246,0.6)",
-                  swatches: true,
+                  download: true,
                 },
               ].map((c) => (
                 <div
@@ -210,17 +210,26 @@ const Index = () => {
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <h3 style={{ fontSize: 18, fontWeight: 800, color: "#ffffff", marginBottom: 8 }}>{c.title}</h3>
                     <p style={{ fontSize: 15, color: "#cbd5e1", lineHeight: 1.7, margin: 0, fontWeight: 500 }}>{c.text}</p>
-                    {c.swatches && (
-                      <div style={{ display: "flex", gap: 12, marginTop: 10, alignItems: "center", flexWrap: "wrap" }}>
-                        <span title="ARGB" style={{ width: 24, height: 24, borderRadius: "50%", background: "linear-gradient(135deg,#a855f7,#22d3ee)", border: "2px solid #475569", boxShadow: "0 0 12px rgba(168,85,247,0.5)", display: "block" }} />
-                        <span title="White" style={{ width: 24, height: 24, borderRadius: "50%", background: "#ffffff", border: "2px solid #334155", display: "block" }} />
-                        <span title="Black" style={{ width: 24, height: 24, borderRadius: "50%", background: "#0a0a0a", border: "2px solid #475569", display: "block" }} />
-                      </div>
+                    {c.download && (
+                      <button
+                        type="button"
+                        onClick={() => window.open("https://www.swisstransfer.com/d/11894fd0-2360-4b07-86a3-a71ffc1b4ced", "_blank")}
+                        className="w-full mt-4 py-3 font-bold text-white rounded-lg"
+                        style={{
+                          background: "linear-gradient(135deg, #00c8ff, #7c3aed)",
+                          boxShadow: "0 4px 20px rgba(0,200,255,0.3)",
+                          border: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        ⬇️ تحميل البرنامج مجاناً
+                      </button>
                     )}
                   </div>
                 </div>
               ))}
             </div>
+
 
             <div className="flex flex-col items-center gap-4 pt-4">
               <div
