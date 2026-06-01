@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { wilayas } from "@/data/algeria";
+import productVideo from "@/assets/g16.mp4.asset.json";
 import {
   Select,
   SelectContent,
@@ -64,7 +65,7 @@ const Index = () => {
   const [wilayaCode, setWilayaCode] = useState<string>("");
   const [commune, setCommune] = useState<string>("");
   const [color, setColor] = useState<ColorOpt>("ARGB");
-  const [delivery, setDelivery] = useState<DeliveryOpt>("office");
+  const [delivery, setDelivery] = useState<DeliveryOpt | null>(null);
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
@@ -75,10 +76,9 @@ const Index = () => {
   );
 
   const productPrice = color === "ARGB" ? 12800 : 13200;
-  const deliveryPrice = delivery === "home" ? 700 : 400;
-  const totalPrice = productPrice + deliveryPrice;
+  const deliveryPrice = delivery ? (delivery === "home" ? 700 : 400) : null;
+  const totalPrice = deliveryPrice !== null ? productPrice + deliveryPrice : null;
 
-  const heroPrice = productPrice;
 
   return (
     <div dir="rtl" className="min-h-screen bg-background text-foreground">
@@ -127,21 +127,19 @@ const Index = () => {
             </p>
           </div>
 
-          {/* Video placeholder */}
+          {/* Product video */}
           <div className="mx-auto max-w-2xl mb-12 sm:mb-16">
-            <div
-              className="w-full aspect-video rounded-2xl border border-white/10 shadow-card flex flex-col items-center justify-center gap-3"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(0,200,255,0.08), rgba(139,92,246,0.08)), #0a0f1f",
-              }}
-            >
-              <div className="w-16 h-16 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center shadow-blue">
-                <Play className="w-7 h-7 text-primary fill-primary" />
-              </div>
-              <span className="text-sm font-semibold text-foreground/80">شاهد كيف تعمل الشاشة</span>
-            </div>
+            <video
+              src={productVideo.url}
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls
+              className="w-full aspect-video rounded-2xl border border-white/10 shadow-card video-glow object-cover"
+            />
           </div>
+
 
           {/* Feature Cards 2x2 */}
           <div className="max-w-3xl mx-auto space-y-6 text-center">
@@ -149,32 +147,32 @@ const Index = () => {
               {[
                 {
                   icon: "🖥️",
-                  title: 'شاشة IPS LCD 9.16 بوصة',
-                  text: "عرض واضح وألوان حية لمعلومات Setup تاعك في الوقت الحقيقي",
+                  title: "إضافة فعلية للـ Setup تاعك",
+                  text: "مش مجرد إكسسوار — شاشة حقيقية تضيف قيمة عملية وبصرية للـ Setup تاعك",
                   border: "rgba(0,200,255,0.3)",
                   borderHover: "rgba(0,200,255,0.6)",
                 },
                 {
                   icon: "🏆",
-                  title: "خامات معدن CNC",
-                  text: "فينيشن فاخر وبناء متين يضيف لمسة Premium حقيقية للـ Setup",
+                  title: "خامات CNC ممتازة",
+                  text: "مصنوعة من معدن CNC عالي الجودة — متينة، فينيشنها ممتاز، وتبقى شكلها زين مع الوقت",
                   border: "rgba(139,92,246,0.3)",
                   borderHover: "rgba(139,92,246,0.6)",
                 },
                 {
-                  icon: "⚡",
-                  title: "Smooth & Responsive",
-                  text: "استجابة سريعة بدون تأخير أو بطء — تجربة استخدام سلسة 100%",
+                  icon: "🎨",
+                  title: "خلفيات حسب مزاجك",
+                  text: "غيّر الثيم متى تحب، وصنع خلفياتك الخاصة — كل يوم Setup بشكل جديد",
                   border: "rgba(0,200,255,0.3)",
                   borderHover: "rgba(0,200,255,0.6)",
                 },
                 {
-                  icon: "🎨",
-                  title: "3 إصدارات متاحة",
-                  text: "اختر بين: White ⬜ / Black ⬛ / ARGB ✨",
+                  icon: "🛠️",
+                  title: "برنامج تعديل سهل وممتاز",
+                  text: "واجهة بسيطة تخليك تخصص كل شيء بسهولة — بدون تعقيد ولا خبرة تقنية",
                   border: "rgba(139,92,246,0.3)",
                   borderHover: "rgba(139,92,246,0.6)",
-                  swatches: true,
+                  download: true,
                 },
               ].map((c) => (
                 <div
@@ -212,17 +210,26 @@ const Index = () => {
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <h3 style={{ fontSize: 18, fontWeight: 800, color: "#ffffff", marginBottom: 8 }}>{c.title}</h3>
                     <p style={{ fontSize: 15, color: "#cbd5e1", lineHeight: 1.7, margin: 0, fontWeight: 500 }}>{c.text}</p>
-                    {c.swatches && (
-                      <div style={{ display: "flex", gap: 12, marginTop: 10, alignItems: "center", flexWrap: "wrap" }}>
-                        <span title="ARGB" style={{ width: 24, height: 24, borderRadius: "50%", background: "linear-gradient(135deg,#a855f7,#22d3ee)", border: "2px solid #475569", boxShadow: "0 0 12px rgba(168,85,247,0.5)", display: "block" }} />
-                        <span title="White" style={{ width: 24, height: 24, borderRadius: "50%", background: "#ffffff", border: "2px solid #334155", display: "block" }} />
-                        <span title="Black" style={{ width: 24, height: 24, borderRadius: "50%", background: "#0a0a0a", border: "2px solid #475569", display: "block" }} />
-                      </div>
+                    {c.download && (
+                      <button
+                        type="button"
+                        onClick={() => window.open("https://www.swisstransfer.com/d/11894fd0-2360-4b07-86a3-a71ffc1b4ced", "_blank")}
+                        className="w-full mt-4 py-3 font-bold text-white rounded-lg"
+                        style={{
+                          background: "linear-gradient(135deg, #00c8ff, #7c3aed)",
+                          boxShadow: "0 4px 20px rgba(0,200,255,0.3)",
+                          border: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        ⬇️ تحميل البرنامج مجاناً
+                      </button>
                     )}
                   </div>
                 </div>
               ))}
             </div>
+
 
             <div className="flex flex-col items-center gap-4 pt-4">
               <div
@@ -237,7 +244,7 @@ const Index = () => {
                   width: "100%",
                 }}
               >
-                <div style={{ fontSize: 14, color: "#94a3b8", marginBottom: 8 }}>🏷️ السعر</div>
+                <div style={{ fontSize: 14, color: "#94a3b8", marginBottom: 4 }}>ابتداءً من</div>
                 <div
                   style={{
                     fontSize: 52,
@@ -247,7 +254,7 @@ const Index = () => {
                     textShadow: "0 0 30px rgba(0,200,255,0.6)",
                   }}
                 >
-                  {heroPrice.toLocaleString()} دج
+                  12,800 دج
                 </div>
                 <div style={{ fontSize: 13, color: "#10b981", marginTop: 8, fontWeight: 600 }}>
                   الدفع عند الاستلام ✓
@@ -301,22 +308,22 @@ const Index = () => {
           <div className="grid lg:grid-cols-3 gap-5 sm:gap-6">
             {[
               {
-                icon: "👑",
-                title: "Setup مميز ما عندوش تاني",
-                desc: "خامات معدن CNC وشاشة IPS تعطي Setup تاعك لمسة Premium ما تلقاها عند غيرك",
-                feel: "راح تحس روحك في مستوى آخر 🔥",
+                icon: "🌡️",
+                title: "تعرف واش راك تدير",
+                desc: "تشوف حرارة CPU و GPU في الوقت الحقيقي — تعرف متى تخفف اللعبة أو تنظف الجهاز قبل ما يتعطل",
+                feel: "",
               },
               {
-                icon: "📊",
-                title: "كل معلوماتك في نظرة واحدة",
-                desc: "CPU / GPU / RAM / الحرارة — كلها أمامك دايماً بدون ما تفتح أي برنامج",
-                feel: "راح تحس روحك Gamer محترف ⚡",
+                icon: "🖥️",
+                title: "شاشة حقيقية مش غادجيت",
+                desc: "IPS LCD 9.16 بوصة بخامات معدن CNC — مش بلاستيك رخيص. تدوم وتبقى شكلها زين مع الوقت",
+                feel: "",
               },
               {
-                icon: "🎨",
-                title: "Setup يعبر عليك بالضبط",
-                desc: "ثيمات وخلفيات تخصصها كيف تحب — Setup تاعك = شخصيتك",
-                feel: "راح تحس روحك متميز على الكل ✨",
+                icon: "⚡",
+                title: "بدون لاق بدون تعقيد",
+                desc: "Plug & Play مباشرة — ما تحتاجش تبرمج أو تنصب درايفرات. توصلها وتخدم فوراً",
+                feel: "",
               },
             ].map((c) => (
               <Card
@@ -439,11 +446,17 @@ const Index = () => {
             {/* Dynamic price breakdown */}
             <div className="mb-6 space-y-1.5">
               <div className="text-sm text-slate-400">سعر المنتج: {productPrice.toLocaleString()} دج</div>
-              <div className="text-sm text-slate-400">التوصيل: +{deliveryPrice.toLocaleString()} دج</div>
-              <div className="my-3 h-px bg-white/10" />
-              <div className="text-5xl sm:text-6xl font-black text-gradient leading-tight">
-                {totalPrice.toLocaleString()} دج
-              </div>
+              {deliveryPrice !== null && (
+                <div className="text-sm text-slate-400">التوصيل: +{deliveryPrice.toLocaleString()} دج</div>
+              )}
+              {totalPrice !== null && (
+                <>
+                  <div className="my-3 h-px bg-white/10" />
+                  <div className="text-5xl sm:text-6xl font-black text-gradient leading-tight">
+                    {totalPrice.toLocaleString()} دج
+                  </div>
+                </>
+              )}
               <div className="text-sm font-semibold text-emerald-400 pt-1">الدفع عند الاستلام ✓</div>
             </div>
 
@@ -467,7 +480,7 @@ const Index = () => {
               className="space-y-3 sm:space-y-4 text-right"
               onSubmit={async (e) => {
                 e.preventDefault();
-                if (!wilayaCode || !commune || !fullName || !phone || submitting) return;
+                if (!wilayaCode || !commune || !fullName || !phone || !delivery || submitting) return;
 
                 setSubmitting(true);
                 const wilayaName = wilayas.find((w) => w.code === wilayaCode)?.name ?? "";
@@ -476,7 +489,6 @@ const Index = () => {
                   phone: phone,
                   state: `${wilayaCode} - ${wilayaName}`,
                   city: `${commune} - ${address}`,
-                  color: color,
                   version: color,
                   delivery_type:
                     delivery === "home"
@@ -485,19 +497,17 @@ const Index = () => {
                   total_price: totalPrice,
                 };
 
-                try {
-                  fetch(
-                    "https://script.google.com/macros/s/AKfycbwyqf4c2m5gqRFDMdrUl8U5A41nSVuV5DXbdV4uvtshWVhXGNhdU6r2o1Ka4Xn34Kdc/exec",
-                    {
-                      method: "POST",
-                      mode: "no-cors",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify(orderData),
-                    },
-                  ).catch(() => {});
-                } finally {
-                  navigate("/thank-you");
-                }
+                fetch(
+                  "https://script.google.com/macros/s/AKfycbz2obxhDROav--g05sz_RewTRRQZe6br9GfokwIpfDC3Pmc0NV2mNXjORjJhwbMiG2ifw/exec",
+                  {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(orderData),
+                  },
+                ).catch(() => {});
+
+                navigate("/thank-you");
               }}
             >
               <div className="text-xs text-right mb-3" style={{ color: "#94a3b8" }}>
