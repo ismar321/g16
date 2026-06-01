@@ -244,7 +244,7 @@ const Index = () => {
                   width: "100%",
                 }}
               >
-                <div style={{ fontSize: 14, color: "#94a3b8", marginBottom: 8 }}>🏷️ السعر</div>
+                <div style={{ fontSize: 14, color: "#94a3b8", marginBottom: 4 }}>ابتداءً من</div>
                 <div
                   style={{
                     fontSize: 52,
@@ -254,7 +254,7 @@ const Index = () => {
                     textShadow: "0 0 30px rgba(0,200,255,0.6)",
                   }}
                 >
-                  {heroPrice.toLocaleString()} دج
+                  12,800 دج
                 </div>
                 <div style={{ fontSize: 13, color: "#10b981", marginTop: 8, fontWeight: 600 }}>
                   الدفع عند الاستلام ✓
