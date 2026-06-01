@@ -463,6 +463,26 @@ const Index = () => {
             </h2>
           </div>
 
+          {/* Images — مباشرة بعد العنوان */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 max-w-5xl mx-auto mb-10 sm:mb-12">
+            {[
+              { s: dimSize800, l: dimSize1600, label: "📐 الأبعاد: 253 × 68 × 13 مم" },
+              { s: dimBack800, l: dimBack1600, label: "🔩 ظهر معدني بفتحات تثبيت متعددة" },
+              { s: dimBox800, l: dimBox1600, label: "📦 محتويات العلبة: شاشة + كابلات + حوامل" },
+            ].map((it) => (
+              <div key={it.label} className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
+                <LazyImage
+                  src800={it.s}
+                  src1600={it.l}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  alt={it.label}
+                  className="w-full h-56 sm:h-64 object-cover cursor-zoom-in"
+                />
+                <div className="p-3 sm:p-4 text-center text-foreground/80 text-sm font-bold">{it.label}</div>
+              </div>
+            ))}
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 max-w-4xl mx-auto">
             {[
               { icon: Ruler, title: "📐 الأبعاد", desc: "25.3 × 6.8 سم | حجم مثالي يناسب أي Setup بدون تعقيد" },
@@ -531,18 +551,6 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 max-w-5xl mx-auto mt-8 sm:mt-10">
-            {[
-              { src: dimSize.url, label: "📐 الأبعاد: 253 × 68 × 13 مم" },
-              { src: dimBack.url, label: "🔩 ظهر معدني بفتحات تثبيت متعددة" },
-              { src: dimBox.url, label: "📦 محتويات العلبة: شاشة + كابلات + حوامل" },
-            ].map((it) => (
-              <div key={it.label} className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
-                <img src={it.src} alt={it.label} loading="lazy" className="w-full h-56 sm:h-64 object-cover cursor-zoom-in" />
-                <div className="p-3 sm:p-4 text-center text-foreground/80 text-sm font-bold">{it.label}</div>
-              </div>
-            ))}
-          </div>
 
 
           <div className="text-center mt-10 sm:mt-12">
