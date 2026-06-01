@@ -2,6 +2,8 @@ import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { wilayas } from "@/data/algeria";
 import productVideo from "@/assets/g16.mp4.asset.json";
+import themePreview from "@/assets/theme_preview.png.asset.json";
+import themesGallery from "@/assets/themes_gallery.png.asset.json";
 import SetupCarousel from "@/components/SetupCarousel";
 import {
   Select,
