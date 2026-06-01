@@ -65,7 +65,7 @@ const Index = () => {
   const [wilayaCode, setWilayaCode] = useState<string>("");
   const [commune, setCommune] = useState<string>("");
   const [color, setColor] = useState<ColorOpt>("ARGB");
-  const [delivery, setDelivery] = useState<DeliveryOpt>("office");
+  const [delivery, setDelivery] = useState<DeliveryOpt | null>(null);
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
@@ -76,10 +76,9 @@ const Index = () => {
   );
 
   const productPrice = color === "ARGB" ? 12800 : 13200;
-  const deliveryPrice = delivery === "home" ? 700 : 400;
-  const totalPrice = productPrice + deliveryPrice;
+  const deliveryPrice = delivery ? (delivery === "home" ? 700 : 400) : null;
+  const totalPrice = deliveryPrice !== null ? productPrice + deliveryPrice : null;
 
-  const heroPrice = productPrice;
 
   return (
     <div dir="rtl" className="min-h-screen bg-background text-foreground">
