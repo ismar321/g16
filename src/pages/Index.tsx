@@ -446,11 +446,17 @@ const Index = () => {
             {/* Dynamic price breakdown */}
             <div className="mb-6 space-y-1.5">
               <div className="text-sm text-slate-400">سعر المنتج: {productPrice.toLocaleString()} دج</div>
-              <div className="text-sm text-slate-400">التوصيل: +{deliveryPrice.toLocaleString()} دج</div>
-              <div className="my-3 h-px bg-white/10" />
-              <div className="text-5xl sm:text-6xl font-black text-gradient leading-tight">
-                {totalPrice.toLocaleString()} دج
-              </div>
+              {deliveryPrice !== null && (
+                <div className="text-sm text-slate-400">التوصيل: +{deliveryPrice.toLocaleString()} دج</div>
+              )}
+              {totalPrice !== null && (
+                <>
+                  <div className="my-3 h-px bg-white/10" />
+                  <div className="text-5xl sm:text-6xl font-black text-gradient leading-tight">
+                    {totalPrice.toLocaleString()} دج
+                  </div>
+                </>
+              )}
               <div className="text-sm font-semibold text-emerald-400 pt-1">الدفع عند الاستلام ✓</div>
             </div>
 
