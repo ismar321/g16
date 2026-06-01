@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { wilayas } from "@/data/algeria";
 import productVideo from "@/assets/g16.mp4.asset.json";
+import SetupCarousel from "@/components/SetupCarousel";
 import {
   Select,
   SelectContent,
@@ -351,10 +352,9 @@ const Index = () => {
             ))}
           </div>
 
-          {/* Before / After images grid (no labels) */}
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 mt-10 sm:mt-14 max-w-4xl mx-auto">
-            <ImagePlaceholder label="Setup قبل" />
-            <ImagePlaceholder label="Setup بعد" />
+          {/* Setup gallery — auto-sliding with counter + zoom */}
+          <div className="mt-10 sm:mt-14">
+            <SetupCarousel />
           </div>
 
           <div className="text-center pt-10 sm:pt-12">
