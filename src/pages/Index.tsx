@@ -5,6 +5,14 @@ import themePreview800 from "@/assets/theme_preview_800.webp.asset.json";
 import themePreview1600 from "@/assets/theme_preview_1600.webp.asset.json";
 import themesGallery800 from "@/assets/themes_gallery_800.webp.asset.json";
 import themesGallery1600 from "@/assets/themes_gallery_1600.webp.asset.json";
+import themePreviewV2_800 from "@/assets/theme_preview_v2_800.webp.asset.json";
+import themePreviewV2_1600 from "@/assets/theme_preview_v2_1600.webp.asset.json";
+import themesLandscape800 from "@/assets/themes_landscape_800.webp.asset.json";
+import themesLandscape1600 from "@/assets/themes_landscape_1600.webp.asset.json";
+import themesPortrait800 from "@/assets/themes_portrait_800.webp.asset.json";
+import themesPortrait1600 from "@/assets/themes_portrait_1600.webp.asset.json";
+import themesGta800 from "@/assets/themes_gta_800.webp.asset.json";
+import themesGta1600 from "@/assets/themes_gta_1600.webp.asset.json";
 import heroBuild1_800 from "@/assets/hero_build_1_800.webp.asset.json";
 import heroBuild1_1600 from "@/assets/hero_build_1_1600.webp.asset.json";
 import heroBuild2_800 from "@/assets/hero_build_2_800.webp.asset.json";
@@ -422,22 +430,23 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
-            <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
-              <LazyImage
-                src800={themePreview800}
-                src1600={themePreview1600}
-                alt="معاينة برنامج التحكم في الثيمات"
-                className="w-full h-auto object-contain cursor-zoom-in"
-              />
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
-              <LazyImage
-                src800={themesGallery800}
-                src1600={themesGallery1600}
-                alt="مجموعة ثيمات وخلفيات جاهزة"
-                className="w-full h-auto object-contain cursor-zoom-in"
-              />
-            </div>
+            {[
+              { s: themePreview800, l: themePreview1600, alt: "معاينة برنامج التحكم في الثيمات" },
+              { s: themePreviewV2_800, l: themePreviewV2_1600, alt: "واجهة اختيار وتعديل الثيمات" },
+              { s: themesGallery800, l: themesGallery1600, alt: "مجموعة ثيمات وخلفيات جاهزة" },
+              { s: themesLandscape800, l: themesLandscape1600, alt: "ثيمات أفقية متنوعة - CPU/GPU/RAM" },
+              { s: themesPortrait800, l: themesPortrait1600, alt: "ثيمات عمودية ووول بيبر أنمي" },
+              { s: themesGta800, l: themesGta1600, alt: "خلفية GTA - وول بيبر ألعاب" },
+            ].map((it) => (
+              <div key={it.alt} className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
+                <LazyImage
+                  src800={it.s}
+                  src1600={it.l}
+                  alt={it.alt}
+                  className="w-full h-auto object-contain cursor-zoom-in"
+                />
+              </div>
+            ))}
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-10 sm:pt-12">
