@@ -344,6 +344,11 @@ const Index = () => {
             </p>
           </div>
 
+          {/* Setup gallery — مباشرة بعد العنوان */}
+          <div className="mb-10 sm:mb-14">
+            <SetupCarousel />
+          </div>
+
           <div className="grid lg:grid-cols-3 gap-5 sm:gap-6">
             {[
               {
@@ -388,11 +393,6 @@ const Index = () => {
                 <p className="text-sm font-bold text-gradient pt-2">{c.feel}</p>
               </Card>
             ))}
-          </div>
-
-          {/* Setup gallery — auto-sliding with counter + zoom */}
-          <div className="mt-10 sm:mt-14">
-            <SetupCarousel />
           </div>
 
           <div className="text-center pt-10 sm:pt-12">
