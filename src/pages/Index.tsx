@@ -127,21 +127,19 @@ const Index = () => {
             </p>
           </div>
 
-          {/* Video placeholder */}
+          {/* Product video */}
           <div className="mx-auto max-w-2xl mb-12 sm:mb-16">
-            <div
-              className="w-full aspect-video rounded-2xl border border-white/10 shadow-card flex flex-col items-center justify-center gap-3"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(0,200,255,0.08), rgba(139,92,246,0.08)), #0a0f1f",
-              }}
-            >
-              <div className="w-16 h-16 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center shadow-blue">
-                <Play className="w-7 h-7 text-primary fill-primary" />
-              </div>
-              <span className="text-sm font-semibold text-foreground/80">شاهد كيف تعمل الشاشة</span>
-            </div>
+            <video
+              src={productVideo.url}
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls
+              className="w-full aspect-video rounded-2xl border border-white/10 shadow-card video-glow object-cover"
+            />
           </div>
+
 
           {/* Feature Cards 2x2 */}
           <div className="max-w-3xl mx-auto space-y-6 text-center">
