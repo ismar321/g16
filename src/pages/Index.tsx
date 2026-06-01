@@ -145,14 +145,33 @@ const Index = () => {
           {/* Product video */}
           <div className="mx-auto max-w-2xl mb-6 sm:mb-8">
             <video
-              src={productVideo.url}
               autoPlay
               muted
               loop
               playsInline
-              controls
+              preload="metadata"
               className="w-full aspect-video rounded-2xl border border-white/10 shadow-card video-glow object-cover"
-            />
+            >
+              <source src="https://mediag16.aktechvault.com/g16.mp4" type="video/mp4" />
+            </video>
+          </div>
+
+          {/* Real build showcase — موضوعة بعد العنوان والفيديو مباشرة */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-3xl mx-auto mb-8 sm:mb-10">
+            {[
+              { s: heroBuild1_800, l: heroBuild1_1600, alt: "Setup حقيقي 1" },
+              { s: heroBuild2_800, l: heroBuild2_1600, alt: "Setup حقيقي 2" },
+            ].map((it) => (
+              <div key={it.alt} className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
+                <LazyImage
+                  src800={it.s}
+                  src1600={it.l}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  alt={it.alt}
+                  className="w-full h-auto object-contain cursor-zoom-in"
+                />
+              </div>
+            ))}
           </div>
 
           <div className="flex justify-center mb-12 sm:mb-16">
