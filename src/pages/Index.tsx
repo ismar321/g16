@@ -423,18 +423,18 @@ const Index = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
-              <img
-                src={themePreview.url}
+              <LazyImage
+                src800={themePreview800}
+                src1600={themePreview1600}
                 alt="معاينة برنامج التحكم في الثيمات"
-                loading="lazy"
                 className="w-full h-auto object-contain cursor-zoom-in"
               />
             </div>
             <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
-              <img
-                src={themesGallery.url}
+              <LazyImage
+                src800={themesGallery800}
+                src1600={themesGallery1600}
                 alt="مجموعة ثيمات وخلفيات جاهزة"
-                loading="lazy"
                 className="w-full h-auto object-contain cursor-zoom-in"
               />
             </div>
