@@ -463,6 +463,8 @@ const Index = () => {
                 <div className="p-3 sm:p-4 text-center text-foreground/80 text-sm font-bold">{it.label}</div>
               </div>
             ))}
+          </div>
+
 
           <div className="text-center mt-10 sm:mt-12">
             <CTAButton />
