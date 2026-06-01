@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { wilayas } from "@/data/algeria";
+import productVideo from "@/assets/g16.mp4.asset.json";
 import {
   Select,
   SelectContent,
