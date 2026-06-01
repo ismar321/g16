@@ -385,13 +385,37 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-            {["ثيم Dashboard", "ثيم Anime", "ثيم Minimal", "ثيم RGB"].map((label) => (
-              <ImagePlaceholder key={label} label={label} aspect="aspect-[4/5]" />
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+            <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
+              <img
+                src={themePreview.url}
+                alt="معاينة برنامج التحكم في الثيمات"
+                loading="lazy"
+                className="w-full h-auto object-contain cursor-zoom-in"
+              />
+            </div>
+            <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
+              <img
+                src={themesGallery.url}
+                alt="مجموعة ثيمات وخلفيات جاهزة"
+                loading="lazy"
+                className="w-full h-auto object-contain cursor-zoom-in"
+              />
+            </div>
           </div>
 
-          <div className="text-center pt-10 sm:pt-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-10 sm:pt-12">
+            <Button
+              onClick={() => window.open("https://www.swisstransfer.com/d/11894fd0-2360-4b07-86a3-a71ffc1b4ced", "_blank")}
+              size="lg"
+              style={{ minWidth: 260, padding: "18px 40px", fontSize: 18, fontWeight: 800 }}
+              className="rounded-xl w-full sm:w-auto text-white hover:opacity-95 hover:scale-105 transition-all duration-300 shadow-blue"
+              css-disabled
+            >
+              <span style={{ background: "linear-gradient(90deg,#00c8ff,#8b5cf6)", padding: "18px 40px", margin: "-18px -40px", borderRadius: 12, display: "inline-flex", alignItems: "center", gap: 8 }}>
+                ⬇️ تحميل البرنامج مجاناً
+              </span>
+            </Button>
             <CTAButton />
           </div>
         </div>
