@@ -408,13 +408,10 @@ const Index = () => {
             <Button
               onClick={() => window.open("https://www.swisstransfer.com/d/11894fd0-2360-4b07-86a3-a71ffc1b4ced", "_blank")}
               size="lg"
-              style={{ minWidth: 260, padding: "18px 40px", fontSize: 18, fontWeight: 800 }}
+              style={{ minWidth: 260, padding: "18px 40px", fontSize: 18, fontWeight: 800, background: "linear-gradient(90deg,#00c8ff,#8b5cf6)" }}
               className="rounded-xl w-full sm:w-auto text-white hover:opacity-95 hover:scale-105 transition-all duration-300 shadow-blue"
-              css-disabled
             >
-              <span style={{ background: "linear-gradient(90deg,#00c8ff,#8b5cf6)", padding: "18px 40px", margin: "-18px -40px", borderRadius: 12, display: "inline-flex", alignItems: "center", gap: 8 }}>
-                ⬇️ تحميل البرنامج مجاناً
-              </span>
+              ⬇️ تحميل البرنامج مجاناً
             </Button>
             <CTAButton />
           </div>
