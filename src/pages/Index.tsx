@@ -480,7 +480,7 @@ const Index = () => {
               className="space-y-3 sm:space-y-4 text-right"
               onSubmit={async (e) => {
                 e.preventDefault();
-                if (!wilayaCode || !commune || !fullName || !phone || submitting) return;
+                if (!wilayaCode || !commune || !fullName || !phone || !delivery || submitting) return;
 
                 setSubmitting(true);
                 const wilayaName = wilayas.find((w) => w.code === wilayaCode)?.name ?? "";
@@ -489,7 +489,6 @@ const Index = () => {
                   phone: phone,
                   state: `${wilayaCode} - ${wilayaName}`,
                   city: `${commune} - ${address}`,
-                  color: color,
                   version: color,
                   delivery_type:
                     delivery === "home"
@@ -498,19 +497,17 @@ const Index = () => {
                   total_price: totalPrice,
                 };
 
-                try {
-                  fetch(
-                    "https://script.google.com/macros/s/AKfycbwyqf4c2m5gqRFDMdrUl8U5A41nSVuV5DXbdV4uvtshWVhXGNhdU6r2o1Ka4Xn34Kdc/exec",
-                    {
-                      method: "POST",
-                      mode: "no-cors",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify(orderData),
-                    },
-                  ).catch(() => {});
-                } finally {
-                  navigate("/thank-you");
-                }
+                fetch(
+                  "https://script.google.com/macros/s/AKfycbz2obxhDROav--g05sz_RewTRRQZe6br9GfokwIpfDC3Pmc0NV2mNXjORjJhwbMiG2ifw/exec",
+                  {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(orderData),
+                  },
+                ).catch(() => {});
+
+                navigate("/thank-you");
               }}
             >
               <div className="text-xs text-right mb-3" style={{ color: "#94a3b8" }}>
