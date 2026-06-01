@@ -268,14 +268,6 @@ const Index = () => {
               ))}
             </div>
 
-            {/* Real build showcase */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-2">
-              {[heroBuild1.url, heroBuild2.url].map((src, idx) => (
-                <div key={src} className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
-                  <img src={src} alt={`Setup حقيقي ${idx + 1}`} loading="lazy" className="w-full h-auto object-contain cursor-zoom-in" />
-                </div>
-              ))}
-            </div>
 
             <div className="flex flex-col items-center gap-4 pt-4">
 
