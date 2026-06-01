@@ -448,7 +448,6 @@ const Index = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 max-w-4xl mx-auto">
             {[
               { icon: Ruler, title: "📐 الأبعاد", desc: "25.3 × 6.8 سم | حجم مثالي يناسب أي Setup بدون تعقيد" },
-              { icon: Wrench, title: "🔩 تركيب سهل", desc: "بدون أدوات خاصة | plug & play في دقائق" },
               { icon: Monitor, title: '🖥️ IPS LCD 9.16"', desc: "دقة عالية وزوايا مشاهدة واسعة" },
               { icon: Shield, title: "🏆 معدن CNC", desc: "هيكل قوي ومقاوم مع فينيشن فاخر" },
             ].map(({ icon: Icon, title, desc }) => (
@@ -465,6 +464,53 @@ const Index = () => {
                 </div>
               </Card>
             ))}
+          </div>
+
+          {/* Easy mounting options */}
+          <div className="max-w-4xl mx-auto mt-8 sm:mt-10">
+            <div className="text-center mb-6">
+              <h3 className="text-xl sm:text-2xl font-black text-foreground">🔩 تركيب سهل</h3>
+              <p className="text-foreground/70 text-sm sm:text-base mt-2">بدون أدوات خاصة | plug & play في دقائق</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+              {[
+                {
+                  emoji: "🧲",
+                  title: "تركيب بالمغناطيس القوي",
+                  desc: "مغناطيس قوي جداً يثبت الشاشة بثبات تام على جدار الكيس أو المرواح — بدون حاجة لأي أدوات أو ثقب",
+                },
+                {
+                  emoji: "🔩",
+                  title: "تركيب بالبراغي فوق المرواح",
+                  desc: "فتحات تثبيت متعددة تسمح لك بتركيب الشاشة بالبراغي فوق المرواح أو على أي سطح مسطح للثبات الأقصى",
+                },
+              ].map((opt) => (
+                <Card
+                  key={opt.title}
+                  className="p-5 sm:p-6 bg-white/5 backdrop-blur border border-white/10 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500"
+                  style={{ borderRadius: 20 }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div
+                      className="flex items-center justify-center shrink-0"
+                      style={{
+                        width: 56,
+                        height: 56,
+                        borderRadius: 14,
+                        background: "rgba(0,200,255,0.1)",
+                        fontSize: 28,
+                      }}
+                    >
+                      {opt.emoji}
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-black text-white mb-1">{opt.title}</h4>
+                      <p className="text-foreground/70 text-sm leading-relaxed">{opt.desc}</p>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 max-w-5xl mx-auto mt-8 sm:mt-10">
