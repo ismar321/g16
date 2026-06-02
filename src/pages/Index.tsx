@@ -307,26 +307,15 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
-            {[
-              { s: themePreview800, l: themePreview1600, alt: "معاينة برنامج التحكم في الثيمات" },
-              { s: themePreviewV2_800, l: themePreviewV2_1600, alt: "واجهة اختيار وتعديل الثيمات" },
-              { s: themesGallery800, l: themesGallery1600, alt: "مجموعة ثيمات وخلفيات جاهزة" },
-              { s: themesLandscape800, l: themesLandscape1600, alt: "ثيمات أفقية متنوعة - CPU/GPU/RAM" },
-              { s: themesPortrait800, l: themesPortrait1600, alt: "ثيمات عمودية ووول بيبر أنمي" },
-              { s: themesGta800, l: themesGta1600, alt: "خلفية GTA - وول بيبر ألعاب" },
-              { s: themesQwq800, l: themesQwq1600, alt: "واجهة Theme Preview - معاينة الثيمات" },
-              { s: themesQwq3_800, l: themesQwq3_1600, alt: "واجهة إدارة الثيمات والخلفيات" },
-            ].map((it) => (
-              <div key={it.alt} className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
-                <LazyImage
-                  src800={it.s}
-                  src1600={it.l}
-                  alt={it.alt}
-                  className="w-full h-auto object-contain cursor-zoom-in"
-                />
-              </div>
-            ))}
+          <div className="max-w-3xl mx-auto">
+            <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
+              <LazyImage
+                src800={themesQwq800}
+                src1600={themesQwq1600}
+                alt="واجهة Theme Preview - معاينة وإدارة الثيمات والخلفيات"
+                className="w-full h-auto object-contain cursor-zoom-in"
+              />
+            </div>
           </div>
 
           <div className="flex items-center justify-center gap-4 pt-10 sm:pt-12">
