@@ -368,15 +368,7 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-10 sm:pt-12">
-            <Button
-              onClick={() => window.open("https://www.swisstransfer.com/d/11894fd0-2360-4b07-86a3-a71ffc1b4ced", "_blank")}
-              size="lg"
-              style={{ minWidth: 260, padding: "18px 40px", fontSize: 18, fontWeight: 800, background: "linear-gradient(90deg,#00c8ff,#8b5cf6)" }}
-              className="rounded-xl w-full sm:w-auto text-white hover:opacity-95 hover:scale-105 transition-all duration-300 shadow-blue"
-            >
-              ⬇️ تحميل البرنامج مجاناً
-            </Button>
+          <div className="flex items-center justify-center gap-4 pt-10 sm:pt-12">
             <CTAButton />
           </div>
         </div>
