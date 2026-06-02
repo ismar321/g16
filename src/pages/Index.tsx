@@ -403,26 +403,6 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 max-w-4xl mx-auto">
-            {[
-              { icon: Ruler, title: "📐 الأبعاد", desc: "25.3 × 6.8 سم | حجم مثالي يناسب أي Setup بدون تعقيد" },
-              { icon: Monitor, title: '🖥️ IPS LCD 9.16"', desc: "دقة عالية وزوايا مشاهدة واسعة" },
-              { icon: Shield, title: "🏆 معدن CNC", desc: "هيكل قوي ومقاوم مع فينيشن فاخر" },
-            ].map(({ icon: Icon, title, desc }) => (
-              <Card
-                key={title}
-                className="p-5 sm:p-6 bg-white/5 backdrop-blur border border-white/10 shadow-card flex items-start gap-4 hover:shadow-glow hover:border-primary/40 transition-all duration-500"
-              >
-                <span className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center shrink-0 shadow-blue">
-                  <Icon className="w-6 h-6 text-white" />
-                </span>
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-foreground mb-1">{title}</h3>
-                  <p className="text-foreground/70 text-sm sm:text-base leading-relaxed">{desc}</p>
-                </div>
-              </Card>
-            ))}
-          </div>
 
           {/* Easy mounting options */}
           <div className="max-w-4xl mx-auto mt-8 sm:mt-10">
