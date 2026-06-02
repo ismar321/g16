@@ -189,92 +189,6 @@ const Index = () => {
 
           {/* Feature Cards 2x2 */}
           <div className="max-w-3xl mx-auto space-y-6 text-center">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-2xl mx-auto text-right">
-              {[
-                {
-                  icon: "🖥️",
-                  title: "إضافة فعلية للـ Setup تاعك",
-                  text: "مش مجرد إكسسوار — شاشة حقيقية تضيف قيمة عملية وبصرية للـ Setup تاعك",
-                  border: "rgba(0,200,255,0.3)",
-                  borderHover: "rgba(0,200,255,0.6)",
-                },
-                {
-                  icon: "🏆",
-                  title: "خامات CNC ممتازة",
-                  text: "مصنوعة من معدن CNC عالي الجودة — متينة، فينيشنها ممتاز، وتبقى شكلها زين مع الوقت",
-                  border: "rgba(139,92,246,0.3)",
-                  borderHover: "rgba(139,92,246,0.6)",
-                },
-                {
-                  icon: "🎨",
-                  title: "خلفيات حسب مزاجك",
-                  text: "غيّر الثيم متى تحب، وصنع خلفياتك الخاصة — كل يوم Setup بشكل جديد",
-                  border: "rgba(0,200,255,0.3)",
-                  borderHover: "rgba(0,200,255,0.6)",
-                },
-                {
-                  icon: "🛠️",
-                  title: "برنامج تعديل سهل وممتاز",
-                  text: "واجهة بسيطة تخليك تخصص كل شيء بسهولة — بدون تعقيد ولا خبرة تقنية",
-                  border: "rgba(139,92,246,0.3)",
-                  borderHover: "rgba(139,92,246,0.6)",
-                  download: true,
-                },
-              ].map((c) => (
-                <div
-                  key={c.title}
-                  className="feature-card"
-                  style={{
-                    background: "rgba(255,255,255,0.04)",
-                    border: `1px solid ${c.border}`,
-                    borderRadius: 20,
-                    padding: "28px 24px",
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: 14,
-                    backdropFilter: "blur(10px)",
-                    transition: "all 0.3s ease",
-                    minHeight: 160,
-                    ["--hover-border" as any]: c.borderHover,
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 56,
-                      height: 56,
-                      borderRadius: 14,
-                      background: "rgba(0,200,255,0.1)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: 28,
-                      flexShrink: 0,
-                    }}
-                  >
-                    {c.icon}
-                  </div>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <h3 style={{ fontSize: 18, fontWeight: 800, color: "#ffffff", marginBottom: 8 }}>{c.title}</h3>
-                    <p style={{ fontSize: 15, color: "#cbd5e1", lineHeight: 1.7, margin: 0, fontWeight: 500 }}>{c.text}</p>
-                    {c.download && (
-                      <button
-                        type="button"
-                        onClick={() => window.open("https://www.swisstransfer.com/d/11894fd0-2360-4b07-86a3-a71ffc1b4ced", "_blank")}
-                        className="w-full mt-4 py-3 font-bold text-white rounded-lg"
-                        style={{
-                          background: "linear-gradient(135deg, #00c8ff, #7c3aed)",
-                          boxShadow: "0 4px 20px rgba(0,200,255,0.3)",
-                          border: "none",
-                          cursor: "pointer",
-                        }}
-                      >
-                        ⬇️ تحميل البرنامج مجاناً
-                      </button>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
 
 
             <div className="flex flex-col items-center gap-4 pt-4">
@@ -284,26 +198,31 @@ const Index = () => {
                   background: "linear-gradient(135deg, rgba(0,200,255,0.08), rgba(139,92,246,0.08))",
                   border: "1px solid rgba(0,200,255,0.25)",
                   borderRadius: 20,
-                  padding: "24px 40px",
+                  padding: "28px 32px",
                   textAlign: "center",
-                  maxWidth: 320,
+                  maxWidth: 480,
                   margin: "0 auto",
                   width: "100%",
                 }}
               >
-                <div style={{ fontSize: 14, color: "#94a3b8", marginBottom: 4 }}>ابتداءً من</div>
+                <div style={{ fontSize: 13, color: "#94a3b8", marginBottom: 14, fontWeight: 500, lineHeight: 1.5 }}>
+                  السعر في المواقع العالمية AliExpress / Amazon يبدأ من <span style={{ fontWeight: 700 }}>55 USD</span>
+                </div>
+                <div style={{ fontSize: 16, color: "#cbd5e1", marginBottom: 6, fontWeight: 600 }}>
+                  السعر عندنا يبدأ من
+                </div>
                 <div
                   style={{
-                    fontSize: 52,
+                    fontSize: 60,
                     fontWeight: 900,
-                    color: "#00c8ff",
-                    lineHeight: 1.1,
-                    textShadow: "0 0 30px rgba(0,200,255,0.6)",
+                    color: "#10b981",
+                    lineHeight: 1.05,
+                    textShadow: "0 0 30px rgba(16,185,129,0.5)",
                   }}
                 >
                   12,800 دج
                 </div>
-                <div style={{ fontSize: 13, color: "#10b981", marginTop: 8, fontWeight: 600 }}>
+                <div style={{ fontSize: 13, color: "#10b981", marginTop: 10, fontWeight: 600 }}>
                   الدفع عند الاستلام ✓
                 </div>
               </div>
@@ -449,15 +368,7 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-10 sm:pt-12">
-            <Button
-              onClick={() => window.open("https://www.swisstransfer.com/d/11894fd0-2360-4b07-86a3-a71ffc1b4ced", "_blank")}
-              size="lg"
-              style={{ minWidth: 260, padding: "18px 40px", fontSize: 18, fontWeight: 800, background: "linear-gradient(90deg,#00c8ff,#8b5cf6)" }}
-              className="rounded-xl w-full sm:w-auto text-white hover:opacity-95 hover:scale-105 transition-all duration-300 shadow-blue"
-            >
-              ⬇️ تحميل البرنامج مجاناً
-            </Button>
+          <div className="flex items-center justify-center gap-4 pt-10 sm:pt-12">
             <CTAButton />
           </div>
         </div>
@@ -492,26 +403,6 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 max-w-4xl mx-auto">
-            {[
-              { icon: Ruler, title: "📐 الأبعاد", desc: "25.3 × 6.8 سم | حجم مثالي يناسب أي Setup بدون تعقيد" },
-              { icon: Monitor, title: '🖥️ IPS LCD 9.16"', desc: "دقة عالية وزوايا مشاهدة واسعة" },
-              { icon: Shield, title: "🏆 معدن CNC", desc: "هيكل قوي ومقاوم مع فينيشن فاخر" },
-            ].map(({ icon: Icon, title, desc }) => (
-              <Card
-                key={title}
-                className="p-5 sm:p-6 bg-white/5 backdrop-blur border border-white/10 shadow-card flex items-start gap-4 hover:shadow-glow hover:border-primary/40 transition-all duration-500"
-              >
-                <span className="w-12 h-12 rounded-lg bg-gradient-primary flex items-center justify-center shrink-0 shadow-blue">
-                  <Icon className="w-6 h-6 text-white" />
-                </span>
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-foreground mb-1">{title}</h3>
-                  <p className="text-foreground/70 text-sm sm:text-base leading-relaxed">{desc}</p>
-                </div>
-              </Card>
-            ))}
-          </div>
 
           {/* Easy mounting options */}
           <div className="max-w-4xl mx-auto mt-8 sm:mt-10">
