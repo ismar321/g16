@@ -315,6 +315,8 @@ const Index = () => {
               { s: themesLandscape800, l: themesLandscape1600, alt: "ثيمات أفقية متنوعة - CPU/GPU/RAM" },
               { s: themesPortrait800, l: themesPortrait1600, alt: "ثيمات عمودية ووول بيبر أنمي" },
               { s: themesGta800, l: themesGta1600, alt: "خلفية GTA - وول بيبر ألعاب" },
+              { s: themesQwq800, l: themesQwq1600, alt: "واجهة Theme Preview - معاينة الثيمات" },
+              { s: themesQwq3_800, l: themesQwq3_1600, alt: "واجهة إدارة الثيمات والخلفيات" },
             ].map((it) => (
               <div key={it.alt} className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
                 <LazyImage
