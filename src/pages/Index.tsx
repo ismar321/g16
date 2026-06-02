@@ -198,26 +198,31 @@ const Index = () => {
                   background: "linear-gradient(135deg, rgba(0,200,255,0.08), rgba(139,92,246,0.08))",
                   border: "1px solid rgba(0,200,255,0.25)",
                   borderRadius: 20,
-                  padding: "24px 40px",
+                  padding: "28px 32px",
                   textAlign: "center",
-                  maxWidth: 320,
+                  maxWidth: 480,
                   margin: "0 auto",
                   width: "100%",
                 }}
               >
-                <div style={{ fontSize: 14, color: "#94a3b8", marginBottom: 4 }}>ابتداءً من</div>
+                <div style={{ fontSize: 13, color: "#94a3b8", marginBottom: 14, fontWeight: 500, lineHeight: 1.5 }}>
+                  السعر في المواقع العالمية AliExpress / Amazon يبدأ من <span style={{ fontWeight: 700 }}>55 USD</span>
+                </div>
+                <div style={{ fontSize: 16, color: "#cbd5e1", marginBottom: 6, fontWeight: 600 }}>
+                  السعر عندنا يبدأ من
+                </div>
                 <div
                   style={{
-                    fontSize: 52,
+                    fontSize: 60,
                     fontWeight: 900,
-                    color: "#00c8ff",
-                    lineHeight: 1.1,
-                    textShadow: "0 0 30px rgba(0,200,255,0.6)",
+                    color: "#10b981",
+                    lineHeight: 1.05,
+                    textShadow: "0 0 30px rgba(16,185,129,0.5)",
                   }}
                 >
                   12,800 دج
                 </div>
-                <div style={{ fontSize: 13, color: "#10b981", marginTop: 8, fontWeight: 600 }}>
+                <div style={{ fontSize: 13, color: "#10b981", marginTop: 10, fontWeight: 600 }}>
                   الدفع عند الاستلام ✓
                 </div>
               </div>
