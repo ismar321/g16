@@ -209,8 +209,8 @@ const Index = () => {
                   width: "100%",
                 }}
               >
-                <div style={{ fontSize: 13, color: "#94a3b8", marginBottom: 14, fontWeight: 500, lineHeight: 1.5 }}>
-                  السعر في المواقع العالمية AliExpress / Amazon يبدأ من <span style={{ fontWeight: 700 }}>55 USD</span>
+                <div style={{ fontSize: 16, color: "#fbbf24", marginBottom: 16, fontWeight: 700, lineHeight: 1.5, padding: "10px 14px", background: "rgba(251,191,36,0.10)", border: "1px solid rgba(251,191,36,0.35)", borderRadius: 12 }}>
+                  السعر في المواقع العالمية AliExpress / Amazon يبدأ من <span style={{ fontSize: 22, fontWeight: 900, color: "#fcd34d" }}>55 USD</span>
                 </div>
                 <div style={{ fontSize: 16, color: "#cbd5e1", marginBottom: 6, fontWeight: 600 }}>
                   السعر عندنا يبدأ من
