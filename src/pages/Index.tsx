@@ -280,51 +280,6 @@ const Index = () => {
             <SetupCarousel />
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-5 sm:gap-6">
-            {[
-              {
-                icon: "🌡️",
-                title: "تعرف واش راك تدير",
-                desc: "تشوف حرارة CPU و GPU في الوقت الحقيقي — تعرف متى تخفف اللعبة أو تنظف الجهاز قبل ما يتعطل",
-                feel: "",
-              },
-              {
-                icon: "🖥️",
-                title: "شاشة حقيقية مش غادجيت",
-                desc: "IPS LCD 9.16 بوصة بخامات معدن CNC — مش بلاستيك رخيص. تدوم وتبقى شكلها زين مع الوقت",
-                feel: "",
-              },
-              {
-                icon: "⚡",
-                title: "بدون لاق بدون تعقيد",
-                desc: "Plug & Play مباشرة — ما تحتاجش تبرمج أو تنصب درايفرات. توصلها وتخدم فوراً",
-                feel: "",
-              },
-            ].map((c) => (
-              <Card
-                key={c.title}
-                className="p-6 sm:p-7 bg-white/5 backdrop-blur border border-white/10 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500 text-center space-y-4"
-                style={{ borderRadius: 20 }}
-              >
-                <div
-                  className="mx-auto flex items-center justify-center"
-                  style={{
-                    width: 72,
-                    height: 72,
-                    borderRadius: 18,
-                    background: "linear-gradient(135deg, rgba(0,200,255,0.15), rgba(139,92,246,0.15))",
-                    border: "1px solid rgba(0,200,255,0.25)",
-                    fontSize: 36,
-                  }}
-                >
-                  {c.icon}
-                </div>
-                <h3 className="text-xl font-black text-white">{c.title}</h3>
-                <p className="text-foreground/75 text-sm sm:text-base leading-relaxed">{c.desc}</p>
-                <p className="text-sm font-bold text-gradient pt-2">{c.feel}</p>
-              </Card>
-            ))}
-          </div>
 
           <div className="text-center pt-10 sm:pt-12">
             <CTAButton />
