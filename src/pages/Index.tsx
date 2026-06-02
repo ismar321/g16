@@ -13,6 +13,10 @@ import themesPortrait800 from "@/assets/themes_portrait_800.webp.asset.json";
 import themesPortrait1600 from "@/assets/themes_portrait_1600.webp.asset.json";
 import themesGta800 from "@/assets/themes_gta_800.webp.asset.json";
 import themesGta1600 from "@/assets/themes_gta_1600.webp.asset.json";
+import themesQwq800 from "@/assets/themes_qwq_800.webp.asset.json";
+import themesQwq1600 from "@/assets/themes_qwq_1600.webp.asset.json";
+import themesQwq3_800 from "@/assets/themes_qwq3_800.webp.asset.json";
+import themesQwq3_1600 from "@/assets/themes_qwq3_1600.webp.asset.json";
 import heroBuild1_800 from "@/assets/hero_build_1_800.webp.asset.json";
 import heroBuild1_1600 from "@/assets/hero_build_1_1600.webp.asset.json";
 import heroBuild2_800 from "@/assets/hero_build_2_800.webp.asset.json";
@@ -205,8 +209,8 @@ const Index = () => {
                   width: "100%",
                 }}
               >
-                <div style={{ fontSize: 13, color: "#94a3b8", marginBottom: 14, fontWeight: 500, lineHeight: 1.5 }}>
-                  السعر في المواقع العالمية AliExpress / Amazon يبدأ من <span style={{ fontWeight: 700 }}>55 USD</span>
+                <div style={{ fontSize: 16, color: "#fbbf24", marginBottom: 16, fontWeight: 700, lineHeight: 1.5, padding: "10px 14px", background: "rgba(251,191,36,0.10)", border: "1px solid rgba(251,191,36,0.35)", borderRadius: 12 }}>
+                  السعر في المواقع العالمية AliExpress / Amazon يبدأ من <span style={{ fontSize: 22, fontWeight: 900, color: "#fcd34d" }}>55 USD</span>
                 </div>
                 <div style={{ fontSize: 16, color: "#cbd5e1", marginBottom: 6, fontWeight: 600 }}>
                   السعر عندنا يبدأ من
@@ -276,51 +280,6 @@ const Index = () => {
             <SetupCarousel />
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-5 sm:gap-6">
-            {[
-              {
-                icon: "🌡️",
-                title: "تعرف واش راك تدير",
-                desc: "تشوف حرارة CPU و GPU في الوقت الحقيقي — تعرف متى تخفف اللعبة أو تنظف الجهاز قبل ما يتعطل",
-                feel: "",
-              },
-              {
-                icon: "🖥️",
-                title: "شاشة حقيقية مش غادجيت",
-                desc: "IPS LCD 9.16 بوصة بخامات معدن CNC — مش بلاستيك رخيص. تدوم وتبقى شكلها زين مع الوقت",
-                feel: "",
-              },
-              {
-                icon: "⚡",
-                title: "بدون لاق بدون تعقيد",
-                desc: "Plug & Play مباشرة — ما تحتاجش تبرمج أو تنصب درايفرات. توصلها وتخدم فوراً",
-                feel: "",
-              },
-            ].map((c) => (
-              <Card
-                key={c.title}
-                className="p-6 sm:p-7 bg-white/5 backdrop-blur border border-white/10 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500 text-center space-y-4"
-                style={{ borderRadius: 20 }}
-              >
-                <div
-                  className="mx-auto flex items-center justify-center"
-                  style={{
-                    width: 72,
-                    height: 72,
-                    borderRadius: 18,
-                    background: "linear-gradient(135deg, rgba(0,200,255,0.15), rgba(139,92,246,0.15))",
-                    border: "1px solid rgba(0,200,255,0.25)",
-                    fontSize: 36,
-                  }}
-                >
-                  {c.icon}
-                </div>
-                <h3 className="text-xl font-black text-white">{c.title}</h3>
-                <p className="text-foreground/75 text-sm sm:text-base leading-relaxed">{c.desc}</p>
-                <p className="text-sm font-bold text-gradient pt-2">{c.feel}</p>
-              </Card>
-            ))}
-          </div>
 
           <div className="text-center pt-10 sm:pt-12">
             <CTAButton />
@@ -356,6 +315,8 @@ const Index = () => {
               { s: themesLandscape800, l: themesLandscape1600, alt: "ثيمات أفقية متنوعة - CPU/GPU/RAM" },
               { s: themesPortrait800, l: themesPortrait1600, alt: "ثيمات عمودية ووول بيبر أنمي" },
               { s: themesGta800, l: themesGta1600, alt: "خلفية GTA - وول بيبر ألعاب" },
+              { s: themesQwq800, l: themesQwq1600, alt: "واجهة Theme Preview - معاينة الثيمات" },
+              { s: themesQwq3_800, l: themesQwq3_1600, alt: "واجهة إدارة الثيمات والخلفيات" },
             ].map((it) => (
               <div key={it.alt} className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
                 <LazyImage
