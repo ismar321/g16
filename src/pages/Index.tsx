@@ -532,13 +532,19 @@ const Index = () => {
               className="space-y-3 sm:space-y-4 text-right"
               onSubmit={async (e) => {
                 e.preventDefault();
-                if (!wilayaCode || !commune || !fullName || !phone || !delivery || submitting) return;
+                const cleanedPhone = phone.replace(/\D/g, "");
+                if (cleanedPhone.length !== 10) {
+                  setPhoneError("تأكد من رقم الهاتف");
+                  return;
+                }
+                setPhoneError("");
+                if (!wilayaCode || !commune || !fullName || !delivery || !stock[color] || submitting) return;
 
                 setSubmitting(true);
                 const wilayaName = wilayas.find((w) => w.code === wilayaCode)?.name ?? "";
-                const orderData = {
-                  name: fullName,
-                  phone: phone,
+                const formData = {
+                  name: String(fullName),
+                  phone: String(cleanedPhone),
                   state: `${wilayaCode} - ${wilayaName}`,
                   city: `${commune} - ${address}`,
                   version: color,
@@ -548,6 +554,7 @@ const Index = () => {
                       : "توصيل للمكتب — 400 دج",
                   total_price: totalPrice,
                 };
+                console.log("Submitting formData:", formData);
 
                 fetch(
                   "https://script.google.com/macros/s/AKfycbz2obxhDROav--g05sz_RewTRRQZe6br9GfokwIpfDC3Pmc0NV2mNXjORjJhwbMiG2ifw/exec",
@@ -555,7 +562,7 @@ const Index = () => {
                     method: "POST",
                     mode: "no-cors",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(orderData),
+                    body: JSON.stringify(formData),
                   },
                 ).catch(() => {});
 
