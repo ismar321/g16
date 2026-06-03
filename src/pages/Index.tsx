@@ -257,8 +257,18 @@ const Index = () => {
                   width: "100%",
                 }}
               >
-                <div style={{ fontSize: 16, color: "#fbbf24", marginBottom: 16, fontWeight: 700, lineHeight: 1.5, padding: "10px 14px", background: "rgba(251,191,36,0.10)", border: "1px solid rgba(251,191,36,0.35)", borderRadius: 12 }}>
-                  السعر في المواقع العالمية AliExpress / Amazon يبدأ من <span style={{ fontSize: 22, fontWeight: 900, color: "#fcd34d" }}>55 USD</span>
+                <div className="ali-amazon-pulse" style={{ fontSize: 16, color: "#fbbf24", marginBottom: 16, fontWeight: 700, lineHeight: 1.6, padding: "12px 14px", background: "rgba(251,191,36,0.10)", border: "1px solid rgba(251,191,36,0.35)", borderRadius: 12 }}>
+                  السعر في المواقع العالمية
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: 4, margin: "0 6px", verticalAlign: "middle" }}>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/AliExpress_logo.svg" alt="AliExpress" loading="lazy" decoding="async" style={{ height: 16, width: "auto", background: "#fff", padding: "2px 4px", borderRadius: 4 }} />
+                    <span>AliExpress</span>
+                  </span>
+                  /
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: 4, margin: "0 6px", verticalAlign: "middle" }}>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" loading="lazy" decoding="async" style={{ height: 14, width: "auto", background: "#fff", padding: "2px 4px", borderRadius: 4 }} />
+                    <span>Amazon</span>
+                  </span>
+                  يبدأ من <span style={{ fontSize: 22, fontWeight: 900, color: "#fcd34d" }}>55 USD</span>
                 </div>
                 <div style={{ fontSize: 16, color: "#cbd5e1", marginBottom: 6, fontWeight: 600 }}>
                   السعر عندنا يبدأ من
