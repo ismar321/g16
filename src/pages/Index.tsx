@@ -588,21 +588,35 @@ const Index = () => {
                   onFocus={(e) => { e.currentTarget.style.borderColor = "#00c8ff"; }}
                   onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; }}
                 />
-                <input
-                  required
-                  type="tel"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="رقم الهاتف"
-                  className="w-full px-4 sm:px-5 py-3 sm:py-4 rounded-lg text-right font-medium"
-                  style={{
-                    background: "rgba(255,255,255,0.08)",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                    color: "#ffffff",
-                  }}
-                  onFocus={(e) => { e.currentTarget.style.borderColor = "#00c8ff"; }}
-                  onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; }}
-                />
+                <div>
+                  <input
+                    required
+                    type="tel"
+                    inputMode="numeric"
+                    pattern="[0-9]{10}"
+                    maxLength={10}
+                    value={phone}
+                    onChange={(e) => {
+                      const v = e.target.value.replace(/\D/g, "").slice(0, 10);
+                      setPhone(v);
+                      if (phoneError && v.length === 10) setPhoneError("");
+                    }}
+                    placeholder="رقم الهاتف (10 أرقام)"
+                    className="w-full px-4 sm:px-5 py-3 sm:py-4 rounded-lg text-right font-medium"
+                    style={{
+                      background: "rgba(255,255,255,0.08)",
+                      border: `1px solid ${phoneError ? "#ef4444" : "rgba(255,255,255,0.2)"}`,
+                      color: "#ffffff",
+                    }}
+                    onFocus={(e) => { if (!phoneError) e.currentTarget.style.borderColor = "#00c8ff"; }}
+                    onBlur={(e) => { e.currentTarget.style.borderColor = phoneError ? "#ef4444" : "rgba(255,255,255,0.2)"; }}
+                  />
+                  {phoneError && (
+                    <div className="text-right mt-1 text-sm font-bold" style={{ color: "#ef4444" }}>
+                      {phoneError}
+                    </div>
+                  )}
+                </div>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
