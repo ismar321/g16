@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { wilayas } from "@/data/algeria";
 import themePreview800 from "@/assets/theme_preview_800.webp.asset.json";
@@ -40,9 +40,23 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Loader as Loader2, Play, Shield, Sparkles, Check, Truck, Cpu, ArrowLeft, CreditCard, ShieldCheck, Ruler, Wrench, Monitor } from "lucide-react";
 
+const DOWNLOAD_URL = "https://www.swisstransfer.com/d/11894fd0-2360-4b07-86a3-a71ffc1b4ced";
+
 const scrollToOrder = () => {
   document.getElementById("order")?.scrollIntoView({ behavior: "smooth" });
 };
+
+const DownloadButton = ({ className = "" }: { className?: string }) => (
+  <a
+    href={DOWNLOAD_URL}
+    target="_blank"
+    rel="noopener noreferrer"
+    className={`inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary/60 text-primary hover:bg-primary/10 hover:border-primary transition-all duration-300 font-bold ${className}`}
+    style={{ minWidth: 260, padding: "16px 28px", fontSize: 16, background: "rgba(0,200,255,0.04)" }}
+  >
+    حمل البرنامج والخلفيات ⬇️
+  </a>
+);
 
 const CTAButton = ({
   children = "🛒 اطلب الآن ←",
@@ -60,6 +74,13 @@ const CTAButton = ({
     {children}
     <ArrowLeft className="w-5 h-5 mr-2" />
   </Button>
+);
+
+const CTAGroup = () => (
+  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full">
+    <CTAButton />
+    <DownloadButton />
+  </div>
 );
 
 // Generic image placeholder block (dark with subtle gradient + label)
@@ -95,8 +116,41 @@ const Index = () => {
   const [delivery, setDelivery] = useState<DeliveryOpt | null>(null);
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
+  const [phoneError, setPhoneError] = useState<string>("");
   const [address, setAddress] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [stock, setStock] = useState<Record<ColorOpt, boolean>>({ White: true, Black: true, ARGB: true });
+
+  useEffect(() => {
+    fetch(
+      "https://script.google.com/macros/s/AKfycbz2obxhDROav--g05sz_RewTRRQZe6br9GfokwIpfDC3Pmc0NV2mNXjORjJhwbMiG2ifw/exec?action=getStock",
+      { mode: "cors" },
+    )
+      .then((r) => r.json())
+      .then((data) => {
+        if (data && typeof data === "object") {
+          const next = {
+            White: data.White !== false,
+            Black: data.Black !== false,
+            ARGB: data.ARGB !== false,
+          };
+          setStock(next);
+          setColor((cur) => {
+            if (next[cur]) return cur;
+            const first = (["ARGB", "White", "Black"] as ColorOpt[]).find((c) => next[c]);
+            return first ?? cur;
+          });
+        }
+      })
+      .catch(() => {
+        // Fallback: try no-cors (response opaque, keeps defaults)
+        fetch(
+          "https://script.google.com/macros/s/AKfycbz2obxhDROav--g05sz_RewTRRQZe6br9GfokwIpfDC3Pmc0NV2mNXjORjJhwbMiG2ifw/exec?action=getStock",
+          { mode: "no-cors" },
+        ).catch(() => {});
+      });
+  }, []);
+
   const communes = useMemo(
     () => wilayas.find((w) => w.code === wilayaCode)?.communes ?? [],
     [wilayaCode],
@@ -187,7 +241,7 @@ const Index = () => {
           </div>
 
           <div className="flex justify-center mb-12 sm:mb-16">
-            <CTAButton />
+            <CTAGroup />
           </div>
 
 
@@ -209,8 +263,18 @@ const Index = () => {
                   width: "100%",
                 }}
               >
-                <div style={{ fontSize: 16, color: "#fbbf24", marginBottom: 16, fontWeight: 700, lineHeight: 1.5, padding: "10px 14px", background: "rgba(251,191,36,0.10)", border: "1px solid rgba(251,191,36,0.35)", borderRadius: 12 }}>
-                  السعر في المواقع العالمية AliExpress / Amazon يبدأ من <span style={{ fontSize: 22, fontWeight: 900, color: "#fcd34d" }}>55 USD</span>
+                <div className="ali-amazon-pulse" style={{ fontSize: 16, color: "#fbbf24", marginBottom: 16, fontWeight: 700, lineHeight: 1.6, padding: "12px 14px", background: "rgba(251,191,36,0.10)", border: "1px solid rgba(251,191,36,0.35)", borderRadius: 12 }}>
+                  السعر في المواقع العالمية
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: 4, margin: "0 6px", verticalAlign: "middle" }}>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/AliExpress_logo.svg" alt="AliExpress" loading="lazy" decoding="async" style={{ height: 16, width: "auto", background: "#fff", padding: "2px 4px", borderRadius: 4 }} />
+                    <span>AliExpress</span>
+                  </span>
+                  /
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: 4, margin: "0 6px", verticalAlign: "middle" }}>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" loading="lazy" decoding="async" style={{ height: 14, width: "auto", background: "#fff", padding: "2px 4px", borderRadius: 4 }} />
+                    <span>Amazon</span>
+                  </span>
+                  يبدأ من <span style={{ fontSize: 22, fontWeight: 900, color: "#fcd34d" }}>55 USD</span>
                 </div>
                 <div style={{ fontSize: 16, color: "#cbd5e1", marginBottom: 6, fontWeight: 600 }}>
                   السعر عندنا يبدأ من
@@ -230,25 +294,27 @@ const Index = () => {
                   الدفع عند الاستلام ✓
                 </div>
               </div>
-              <button
-                type="button"
-                onClick={scrollToOrder}
-                className="cta-pulse w-full sm:w-auto"
-                style={{
-                  background: "linear-gradient(135deg, #00c8ff, #7c3aed)",
-                  color: "white",
-                  fontSize: 22,
-                  fontWeight: 800,
-                  padding: "20px 60px",
-                  borderRadius: 50,
-                  border: "none",
-                  boxShadow: "0 8px 32px rgba(0,200,255,0.4)",
-                  marginTop: 16,
-                  cursor: "pointer",
-                }}
-              >
-                🛒 اطلب الآن ←
-              </button>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full" style={{ marginTop: 16 }}>
+                <button
+                  type="button"
+                  onClick={scrollToOrder}
+                  className="cta-pulse w-full sm:w-auto"
+                  style={{
+                    background: "linear-gradient(135deg, #00c8ff, #7c3aed)",
+                    color: "white",
+                    fontSize: 22,
+                    fontWeight: 800,
+                    padding: "20px 60px",
+                    borderRadius: 50,
+                    border: "none",
+                    boxShadow: "0 8px 32px rgba(0,200,255,0.4)",
+                    cursor: "pointer",
+                  }}
+                >
+                  🛒 اطلب الآن ←
+                </button>
+                <DownloadButton />
+              </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 justify-center text-xs sm:text-sm text-foreground/70 pt-2">
@@ -282,7 +348,7 @@ const Index = () => {
 
 
           <div className="text-center pt-10 sm:pt-12">
-            <CTAButton />
+            <CTAGroup />
           </div>
         </div>
       </section>
@@ -319,7 +385,7 @@ const Index = () => {
           </div>
 
           <div className="flex items-center justify-center gap-4 pt-10 sm:pt-12">
-            <CTAButton />
+            <CTAGroup />
           </div>
         </div>
       </section>
@@ -404,7 +470,7 @@ const Index = () => {
 
 
           <div className="text-center mt-10 sm:mt-12">
-            <CTAButton />
+            <CTAGroup />
           </div>
         </div>
       </section>
@@ -472,13 +538,19 @@ const Index = () => {
               className="space-y-3 sm:space-y-4 text-right"
               onSubmit={async (e) => {
                 e.preventDefault();
-                if (!wilayaCode || !commune || !fullName || !phone || !delivery || submitting) return;
+                const cleanedPhone = phone.replace(/\D/g, "");
+                if (cleanedPhone.length !== 10) {
+                  setPhoneError("تأكد من رقم الهاتف");
+                  return;
+                }
+                setPhoneError("");
+                if (!wilayaCode || !commune || !fullName || !delivery || !stock[color] || submitting) return;
 
                 setSubmitting(true);
                 const wilayaName = wilayas.find((w) => w.code === wilayaCode)?.name ?? "";
-                const orderData = {
-                  name: fullName,
-                  phone: phone,
+                const formData = {
+                  name: String(fullName),
+                  phone: String(cleanedPhone),
                   state: `${wilayaCode} - ${wilayaName}`,
                   city: `${commune} - ${address}`,
                   version: color,
@@ -488,6 +560,7 @@ const Index = () => {
                       : "توصيل للمكتب — 400 دج",
                   total_price: totalPrice,
                 };
+                console.log("Submitting formData:", formData);
 
                 fetch(
                   "https://script.google.com/macros/s/AKfycbz2obxhDROav--g05sz_RewTRRQZe6br9GfokwIpfDC3Pmc0NV2mNXjORjJhwbMiG2ifw/exec",
@@ -495,7 +568,7 @@ const Index = () => {
                     method: "POST",
                     mode: "no-cors",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(orderData),
+                    body: JSON.stringify(formData),
                   },
                 ).catch(() => {});
 
@@ -521,21 +594,35 @@ const Index = () => {
                   onFocus={(e) => { e.currentTarget.style.borderColor = "#00c8ff"; }}
                   onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; }}
                 />
-                <input
-                  required
-                  type="tel"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="رقم الهاتف"
-                  className="w-full px-4 sm:px-5 py-3 sm:py-4 rounded-lg text-right font-medium"
-                  style={{
-                    background: "rgba(255,255,255,0.08)",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                    color: "#ffffff",
-                  }}
-                  onFocus={(e) => { e.currentTarget.style.borderColor = "#00c8ff"; }}
-                  onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; }}
-                />
+                <div>
+                  <input
+                    required
+                    type="tel"
+                    inputMode="numeric"
+                    pattern="[0-9]{10}"
+                    maxLength={10}
+                    value={phone}
+                    onChange={(e) => {
+                      const v = e.target.value.replace(/\D/g, "").slice(0, 10);
+                      setPhone(v);
+                      if (phoneError && v.length === 10) setPhoneError("");
+                    }}
+                    placeholder="رقم الهاتف (10 أرقام)"
+                    className="w-full px-4 sm:px-5 py-3 sm:py-4 rounded-lg text-right font-medium"
+                    style={{
+                      background: "rgba(255,255,255,0.08)",
+                      border: `1px solid ${phoneError ? "#ef4444" : "rgba(255,255,255,0.2)"}`,
+                      color: "#ffffff",
+                    }}
+                    onFocus={(e) => { if (!phoneError) e.currentTarget.style.borderColor = "#00c8ff"; }}
+                    onBlur={(e) => { e.currentTarget.style.borderColor = phoneError ? "#ef4444" : "rgba(255,255,255,0.2)"; }}
+                  />
+                  {phoneError && (
+                    <div className="text-right mt-1 text-sm font-bold" style={{ color: "#ef4444" }}>
+                      {phoneError}
+                    </div>
+                  )}
+                </div>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
@@ -608,24 +695,43 @@ const Index = () => {
                     { value: "ARGB" as ColorOpt, label: "✨ ARGB", swatchStyle: { background: "linear-gradient(135deg,#a855f7,#22d3ee)", borderColor: "#475569" } },
                   ]).map((opt) => {
                     const active = color === opt.value;
+                    const inStock = stock[opt.value];
                     return (
-                      <button
-                        key={opt.value}
-                        type="button"
-                        onClick={() => setColor(opt.value)}
-                        className={`flex flex-col items-center justify-center gap-2 px-2 py-3 rounded-lg border-2 transition-all font-semibold text-sm ${
-                          active
-                            ? "border-primary shadow-blue text-white"
-                            : "border-white/20 hover:border-primary/50 text-white"
-                        }`}
-                        style={{
-                          background: active ? "rgba(0,200,255,0.12)" : "rgba(255,255,255,0.05)",
-                        }}
-                      >
-                        <span className="w-6 h-6 rounded-full border-2" style={opt.swatchStyle} />
-                        <span>{opt.label}</span>
-                        {active && <Check className="w-4 h-4 text-primary" />}
-                      </button>
+                      <div key={opt.value} className="relative">
+                        {!inStock && (
+                          <span
+                            className="absolute -top-2 left-1/2 -translate-x-1/2 z-10 px-2 py-0.5 rounded-full text-[10px] font-black text-white whitespace-nowrap"
+                            style={{ background: "#ef4444", boxShadow: "0 2px 8px rgba(239,68,68,0.5)" }}
+                          >
+                            Out of Stock
+                          </span>
+                        )}
+                        <button
+                          type="button"
+                          disabled={!inStock}
+                          onClick={() => inStock && setColor(opt.value)}
+                          className={`w-full flex flex-col items-center justify-center gap-2 px-2 py-3 rounded-lg border-2 transition-all font-semibold text-sm ${
+                            !inStock
+                              ? "border-red-500/40 cursor-not-allowed text-white/50"
+                              : active
+                                ? "border-primary shadow-blue text-white"
+                                : "border-white/20 hover:border-primary/50 text-white"
+                          }`}
+                          style={{
+                            background: !inStock
+                              ? "rgba(120,120,120,0.08)"
+                              : active
+                                ? "rgba(0,200,255,0.12)"
+                                : "rgba(255,255,255,0.05)",
+                            opacity: !inStock ? 0.55 : 1,
+                            filter: !inStock ? "grayscale(0.9)" : "none",
+                          }}
+                        >
+                          <span className="w-6 h-6 rounded-full border-2" style={opt.swatchStyle} />
+                          <span>{opt.label}</span>
+                          {active && inStock && <Check className="w-4 h-4 text-primary" />}
+                        </button>
+                      </div>
                     );
                   })}
                 </div>
