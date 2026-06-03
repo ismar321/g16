@@ -40,9 +40,23 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Loader as Loader2, Play, Shield, Sparkles, Check, Truck, Cpu, ArrowLeft, CreditCard, ShieldCheck, Ruler, Wrench, Monitor } from "lucide-react";
 
+const DOWNLOAD_URL = "https://www.swisstransfer.com/d/11894fd0-2360-4b07-86a3-a71ffc1b4ced";
+
 const scrollToOrder = () => {
   document.getElementById("order")?.scrollIntoView({ behavior: "smooth" });
 };
+
+const DownloadButton = ({ className = "" }: { className?: string }) => (
+  <a
+    href={DOWNLOAD_URL}
+    target="_blank"
+    rel="noopener noreferrer"
+    className={`inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary/60 text-primary hover:bg-primary/10 hover:border-primary transition-all duration-300 font-bold ${className}`}
+    style={{ minWidth: 260, padding: "16px 28px", fontSize: 16, background: "rgba(0,200,255,0.04)" }}
+  >
+    حمل البرنامج والخلفيات ⬇️
+  </a>
+);
 
 const CTAButton = ({
   children = "🛒 اطلب الآن ←",
@@ -60,6 +74,13 @@ const CTAButton = ({
     {children}
     <ArrowLeft className="w-5 h-5 mr-2" />
   </Button>
+);
+
+const CTAGroup = () => (
+  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full">
+    <CTAButton />
+    <DownloadButton />
+  </div>
 );
 
 // Generic image placeholder block (dark with subtle gradient + label)
