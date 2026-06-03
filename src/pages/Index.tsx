@@ -129,10 +129,16 @@ const Index = () => {
       .then((r) => r.json())
       .then((data) => {
         if (data && typeof data === "object") {
-          setStock({
+          const next = {
             White: data.White !== false,
             Black: data.Black !== false,
             ARGB: data.ARGB !== false,
+          };
+          setStock(next);
+          setColor((cur) => {
+            if (next[cur]) return cur;
+            const first = (["ARGB", "White", "Black"] as ColorOpt[]).find((c) => next[c]);
+            return first ?? cur;
           });
         }
       })
