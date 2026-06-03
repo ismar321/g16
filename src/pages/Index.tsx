@@ -689,24 +689,43 @@ const Index = () => {
                     { value: "ARGB" as ColorOpt, label: "✨ ARGB", swatchStyle: { background: "linear-gradient(135deg,#a855f7,#22d3ee)", borderColor: "#475569" } },
                   ]).map((opt) => {
                     const active = color === opt.value;
+                    const inStock = stock[opt.value];
                     return (
-                      <button
-                        key={opt.value}
-                        type="button"
-                        onClick={() => setColor(opt.value)}
-                        className={`flex flex-col items-center justify-center gap-2 px-2 py-3 rounded-lg border-2 transition-all font-semibold text-sm ${
-                          active
-                            ? "border-primary shadow-blue text-white"
-                            : "border-white/20 hover:border-primary/50 text-white"
-                        }`}
-                        style={{
-                          background: active ? "rgba(0,200,255,0.12)" : "rgba(255,255,255,0.05)",
-                        }}
-                      >
-                        <span className="w-6 h-6 rounded-full border-2" style={opt.swatchStyle} />
-                        <span>{opt.label}</span>
-                        {active && <Check className="w-4 h-4 text-primary" />}
-                      </button>
+                      <div key={opt.value} className="relative">
+                        {!inStock && (
+                          <span
+                            className="absolute -top-2 left-1/2 -translate-x-1/2 z-10 px-2 py-0.5 rounded-full text-[10px] font-black text-white whitespace-nowrap"
+                            style={{ background: "#ef4444", boxShadow: "0 2px 8px rgba(239,68,68,0.5)" }}
+                          >
+                            Out of Stock
+                          </span>
+                        )}
+                        <button
+                          type="button"
+                          disabled={!inStock}
+                          onClick={() => inStock && setColor(opt.value)}
+                          className={`w-full flex flex-col items-center justify-center gap-2 px-2 py-3 rounded-lg border-2 transition-all font-semibold text-sm ${
+                            !inStock
+                              ? "border-red-500/40 cursor-not-allowed text-white/50"
+                              : active
+                                ? "border-primary shadow-blue text-white"
+                                : "border-white/20 hover:border-primary/50 text-white"
+                          }`}
+                          style={{
+                            background: !inStock
+                              ? "rgba(120,120,120,0.08)"
+                              : active
+                                ? "rgba(0,200,255,0.12)"
+                                : "rgba(255,255,255,0.05)",
+                            opacity: !inStock ? 0.55 : 1,
+                            filter: !inStock ? "grayscale(0.9)" : "none",
+                          }}
+                        >
+                          <span className="w-6 h-6 rounded-full border-2" style={opt.swatchStyle} />
+                          <span>{opt.label}</span>
+                          {active && inStock && <Check className="w-4 h-4 text-primary" />}
+                        </button>
+                      </div>
                     );
                   })}
                 </div>
