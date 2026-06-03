@@ -288,25 +288,27 @@ const Index = () => {
                   الدفع عند الاستلام ✓
                 </div>
               </div>
-              <button
-                type="button"
-                onClick={scrollToOrder}
-                className="cta-pulse w-full sm:w-auto"
-                style={{
-                  background: "linear-gradient(135deg, #00c8ff, #7c3aed)",
-                  color: "white",
-                  fontSize: 22,
-                  fontWeight: 800,
-                  padding: "20px 60px",
-                  borderRadius: 50,
-                  border: "none",
-                  boxShadow: "0 8px 32px rgba(0,200,255,0.4)",
-                  marginTop: 16,
-                  cursor: "pointer",
-                }}
-              >
-                🛒 اطلب الآن ←
-              </button>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full" style={{ marginTop: 16 }}>
+                <button
+                  type="button"
+                  onClick={scrollToOrder}
+                  className="cta-pulse w-full sm:w-auto"
+                  style={{
+                    background: "linear-gradient(135deg, #00c8ff, #7c3aed)",
+                    color: "white",
+                    fontSize: 22,
+                    fontWeight: 800,
+                    padding: "20px 60px",
+                    borderRadius: 50,
+                    border: "none",
+                    boxShadow: "0 8px 32px rgba(0,200,255,0.4)",
+                    cursor: "pointer",
+                  }}
+                >
+                  🛒 اطلب الآن ←
+                </button>
+                <DownloadButton />
+              </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 justify-center text-xs sm:text-sm text-foreground/70 pt-2">
