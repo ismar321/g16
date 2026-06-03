@@ -235,7 +235,7 @@ const Index = () => {
           </div>
 
           <div className="flex justify-center mb-12 sm:mb-16">
-            <CTAButton />
+            <CTAGroup />
           </div>
 
 
