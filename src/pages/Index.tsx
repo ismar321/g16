@@ -116,8 +116,35 @@ const Index = () => {
   const [delivery, setDelivery] = useState<DeliveryOpt | null>(null);
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
+  const [phoneError, setPhoneError] = useState<string>("");
   const [address, setAddress] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [stock, setStock] = useState<Record<ColorOpt, boolean>>({ White: true, Black: true, ARGB: true });
+
+  useEffect(() => {
+    fetch(
+      "https://script.google.com/macros/s/AKfycbz2obxhDROav--g05sz_RewTRRQZe6br9GfokwIpfDC3Pmc0NV2mNXjORjJhwbMiG2ifw/exec?action=getStock",
+      { mode: "cors" },
+    )
+      .then((r) => r.json())
+      .then((data) => {
+        if (data && typeof data === "object") {
+          setStock({
+            White: data.White !== false,
+            Black: data.Black !== false,
+            ARGB: data.ARGB !== false,
+          });
+        }
+      })
+      .catch(() => {
+        // Fallback: try no-cors (response opaque, keeps defaults)
+        fetch(
+          "https://script.google.com/macros/s/AKfycbz2obxhDROav--g05sz_RewTRRQZe6br9GfokwIpfDC3Pmc0NV2mNXjORjJhwbMiG2ifw/exec?action=getStock",
+          { mode: "no-cors" },
+        ).catch(() => {});
+      });
+  }, []);
+
   const communes = useMemo(
     () => wilayas.find((w) => w.code === wilayaCode)?.communes ?? [],
     [wilayaCode],
