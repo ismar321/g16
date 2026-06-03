@@ -78,7 +78,7 @@ const CTAButton = ({
 
 const CTAGroup = () => (
   <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full">
-    <CTAGroup />
+    <CTAButton />
     <DownloadButton />
   </div>
 );
