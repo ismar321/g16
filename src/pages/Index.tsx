@@ -78,7 +78,7 @@ const CTAButton = ({
 
 const CTAGroup = () => (
   <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full">
-    <CTAButton />
+    <CTAGroup />
     <DownloadButton />
   </div>
 );
@@ -342,7 +342,7 @@ const Index = () => {
 
 
           <div className="text-center pt-10 sm:pt-12">
-            <CTAButton />
+            <CTAGroup />
           </div>
         </div>
       </section>
@@ -379,7 +379,7 @@ const Index = () => {
           </div>
 
           <div className="flex items-center justify-center gap-4 pt-10 sm:pt-12">
-            <CTAButton />
+            <CTAGroup />
           </div>
         </div>
       </section>
@@ -464,7 +464,7 @@ const Index = () => {
 
 
           <div className="text-center mt-10 sm:mt-12">
-            <CTAButton />
+            <CTAGroup />
           </div>
         </div>
       </section>
