@@ -263,21 +263,19 @@ const Index = () => {
                   width: "100%",
                 }}
               >
-              <div className="ali-amazon-pulse" style={{ fontSize: 18, color: "#fbbf24", marginBottom: 20, fontWeight: 800, lineHeight: 1.5, padding: "16px 20px", background: "rgba(251,191,36,0.10)", border: "1px solid rgba(251,191,36,0.35)", borderRadius: 14 }}>
-                <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
-                  <span>السعر في المواقع العالمية</span>
-                  <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/AliExpress_logo.svg" alt="AliExpress" loading="lazy" decoding="async" style={{ height: 60, width: "auto", background: "#fff", padding: "4px 8px", borderRadius: 6 }} />
-                    <span style={{ fontSize: 22, fontWeight: 900, color: "#fff" }}>AliExpress</span>
+                <div className="ali-amazon-pulse" style={{ fontSize: 16, color: "#fbbf24", marginBottom: 16, fontWeight: 700, lineHeight: 1.6, padding: "12px 14px", background: "rgba(251,191,36,0.10)", border: "1px solid rgba(251,191,36,0.35)", borderRadius: 12 }}>
+                  السعر في المواقع العالمية
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: 4, margin: "0 6px", verticalAlign: "middle" }}>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/AliExpress_logo.svg" alt="AliExpress" loading="lazy" decoding="async" style={{ height: 16, width: "auto", background: "#fff", padding: "2px 4px", borderRadius: 4 }} />
+                    <span>AliExpress</span>
                   </span>
-                  <span style={{ fontSize: 20, fontWeight: 700, color: "#fbbf24" }}>/</span>
-                  <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" loading="lazy" decoding="async" style={{ height: 60, width: "auto", background: "#fff", padding: "4px 8px", borderRadius: 6 }} />
-                    <span style={{ fontSize: 22, fontWeight: 900, color: "#fff" }}>Amazon</span>
+                  /
+                  <span style={{ display: "inline-flex", alignItems: "center", gap: 4, margin: "0 6px", verticalAlign: "middle" }}>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" loading="lazy" decoding="async" style={{ height: 14, width: "auto", background: "#fff", padding: "2px 4px", borderRadius: 4 }} />
+                    <span>Amazon</span>
                   </span>
-                  <span>يبدأ من <span style={{ fontSize: 26, fontWeight: 900, color: "#fcd34d" }}>55 USD</span></span>
+                  يبدأ من <span style={{ fontSize: 22, fontWeight: 900, color: "#fcd34d" }}>55 USD</span>
                 </div>
-              </div>
                 <div style={{ fontSize: 16, color: "#cbd5e1", marginBottom: 6, fontWeight: 600 }}>
                   السعر عندنا يبدأ من
                 </div>
