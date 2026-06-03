@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { wilayas } from "@/data/algeria";
 import themePreview800 from "@/assets/theme_preview_800.webp.asset.json";
