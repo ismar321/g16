@@ -308,7 +308,7 @@ const Index = () => {
                     textShadow: "0 0 30px rgba(16,185,129,0.5)",
                   }}
                 >
-                  12,800 دج
+                  {startingPrice.toLocaleString()} دج
                 </div>
                 <div style={{ fontSize: 13, color: "#10b981", marginTop: 10, fontWeight: 600 }}>
                   الدفع عند الاستلام ✓
