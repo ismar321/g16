@@ -764,12 +764,12 @@ const Index = () => {
                   {([
                     {
                       value: "office" as DeliveryOpt,
-                      title: "🏢 توصيل للمكتب — 400 دج",
+                      title: `🏢 توصيل للمكتب — ${prices.delivery_office.toLocaleString()} دج`,
                       desc: "تستلم من أقرب مكتب للشركة",
                     },
                     {
                       value: "home" as DeliveryOpt,
-                      title: "🏠 توصيل لباب الدار — 700 دج",
+                      title: `🏠 توصيل لباب الدار — ${prices.delivery_home.toLocaleString()} دج`,
                       desc: "يوصلك مباشرة لعنوانك",
                     },
                   ]).map((opt) => {
