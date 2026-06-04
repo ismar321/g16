@@ -120,12 +120,18 @@ const Index = () => {
   const [address, setAddress] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [stock, setStock] = useState<Record<ColorOpt, boolean>>({ White: true, Black: true, ARGB: true });
+  const [prices, setPrices] = useState<{ White: number; Black: number; ARGB: number; delivery_home: number; delivery_office: number }>({
+    White: 12800,
+    Black: 12800,
+    ARGB: 13500,
+    delivery_home: 700,
+    delivery_office: 400,
+  });
+
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz2obxhDROav--g05sz_RewTRRQZe6br9GfokwIpfDC3Pmc0NV2mNXjORjJhwbMiG2ifw/exec";
 
   useEffect(() => {
-    fetch(
-      "https://script.google.com/macros/s/AKfycbz2obxhDROav--g05sz_RewTRRQZe6br9GfokwIpfDC3Pmc0NV2mNXjORjJhwbMiG2ifw/exec?action=getStock",
-      { mode: "cors" },
-    )
+    fetch(`${SCRIPT_URL}?action=getStock`, { mode: "cors" })
       .then((r) => r.json())
       .then((data) => {
         if (data && typeof data === "object") {
@@ -143,11 +149,24 @@ const Index = () => {
         }
       })
       .catch(() => {
-        // Fallback: try no-cors (response opaque, keeps defaults)
-        fetch(
-          "https://script.google.com/macros/s/AKfycbz2obxhDROav--g05sz_RewTRRQZe6br9GfokwIpfDC3Pmc0NV2mNXjORjJhwbMiG2ifw/exec?action=getStock",
-          { mode: "no-cors" },
-        ).catch(() => {});
+        fetch(`${SCRIPT_URL}?action=getStock`, { mode: "no-cors" }).catch(() => {});
+      });
+
+    fetch(`${SCRIPT_URL}?action=getPrice`, { mode: "cors" })
+      .then((r) => r.json())
+      .then((data) => {
+        if (data && typeof data === "object") {
+          setPrices((cur) => ({
+            White: Number(data.White) || cur.White,
+            Black: Number(data.Black) || cur.Black,
+            ARGB: Number(data.ARGB) || cur.ARGB,
+            delivery_home: Number(data.delivery_home) || cur.delivery_home,
+            delivery_office: Number(data.delivery_office) || cur.delivery_office,
+          }));
+        }
+      })
+      .catch(() => {
+        fetch(`${SCRIPT_URL}?action=getPrice`, { mode: "no-cors" }).catch(() => {});
       });
   }, []);
 
@@ -156,9 +175,10 @@ const Index = () => {
     [wilayaCode],
   );
 
-  const productPrice = color === "ARGB" ? 12800 : 13200;
-  const deliveryPrice = delivery ? (delivery === "home" ? 700 : 400) : null;
+  const productPrice = prices[color];
+  const deliveryPrice = delivery ? (delivery === "home" ? prices.delivery_home : prices.delivery_office) : null;
   const totalPrice = deliveryPrice !== null ? productPrice + deliveryPrice : null;
+  const startingPrice = Math.min(prices.White, prices.Black, prices.ARGB);
 
 
   return (
