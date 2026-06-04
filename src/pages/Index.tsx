@@ -576,8 +576,8 @@ const Index = () => {
                   version: color,
                   delivery_type:
                     delivery === "home"
-                      ? "توصيل لباب الدار — 700 دج"
-                      : "توصيل للمكتب — 400 دج",
+                      ? `توصيل لباب الدار — ${prices.delivery_home.toLocaleString()} دج`
+                      : `توصيل للمكتب — ${prices.delivery_office.toLocaleString()} دج`,
                   total_price: totalPrice,
                 };
                 console.log("Submitting formData:", formData);
