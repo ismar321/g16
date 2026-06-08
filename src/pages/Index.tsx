@@ -488,17 +488,16 @@ const Index = () => {
               ].map((opt) => (
                 <Card
                   key={opt.title}
-                  className="p-5 sm:p-6 bg-white/5 backdrop-blur border border-white/10 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500"
+                  className="p-0 lg:p-6 bg-transparent lg:bg-white/5 lg:backdrop-blur border-0 lg:border lg:border-white/10 shadow-none lg:shadow-card lg:hover:shadow-glow lg:hover:border-primary/40 transition-all duration-500"
                   style={{ borderRadius: 20 }}
                 >
                   <div className="flex items-start gap-4">
                     <div
-                      className="flex items-center justify-center shrink-0"
+                      className="flex items-center justify-center shrink-0 bg-transparent lg:bg-[rgba(0,200,255,0.1)]"
                       style={{
                         width: 56,
                         height: 56,
                         borderRadius: 14,
-                        background: "rgba(0,200,255,0.1)",
                         fontSize: 28,
                       }}
                     >
