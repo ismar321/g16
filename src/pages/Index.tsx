@@ -273,6 +273,12 @@ const Index = () => {
 
             <div className="flex flex-col items-center gap-4 pt-4">
 
+              <div className="w-full mb-2">
+                <PcSetupSlider />
+              </div>
+
+
+
               <div
                 style={{
                   background: "linear-gradient(135deg, rgba(0,200,255,0.08), rgba(139,92,246,0.08))",
