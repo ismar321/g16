@@ -404,15 +404,23 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="max-w-3xl mx-auto">
-            <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
-              <LazyImage
-                src800={themesQwq800}
-                src1600={themesQwq1600}
-                alt="واجهة Theme Preview - معاينة وإدارة الثيمات والخلفيات"
-                className="w-full h-auto object-contain cursor-zoom-in"
+          <div className="max-w-4xl mx-auto">
+            <div className="rounded-2xl overflow-hidden border border-white/10 bg-black shadow-card hover:shadow-glow hover:border-primary/40 transition-all duration-500">
+              <video
+                src="https://mediag16.aktechvault.com/6.164.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                controls
+                className="w-full h-auto block"
               />
             </div>
+          </div>
+
+          <div className="mt-8 sm:mt-10">
+            <WallpapersSlider />
           </div>
 
           <div className="flex items-center justify-center gap-4 pt-10 sm:pt-12">
