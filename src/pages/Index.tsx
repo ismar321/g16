@@ -29,6 +29,7 @@ import dimBox800 from "@/assets/dim_box_800.webp.asset.json";
 import dimBox1600 from "@/assets/dim_box_1600.webp.asset.json";
 import SetupCarousel from "@/components/SetupCarousel";
 import WallpapersSlider from "@/components/WallpapersSlider";
+import PcSetupSlider from "@/components/PcSetupSlider";
 import LazyImage from "@/components/LazyImage";
 import {
   Select,
