@@ -361,9 +361,20 @@ const Index = () => {
             </p>
           </div>
 
-          {/* Setup gallery — مباشرة بعد العنوان */}
-          <div className="mb-10 sm:mb-14">
-            <SetupCarousel />
+          {/* Setup video — مباشرة بعد العنوان */}
+          <div className="mb-10 sm:mb-14 max-w-4xl mx-auto">
+            <div className="rounded-2xl overflow-hidden border border-white/10 bg-black shadow-card">
+              <video
+                src="https://mediag16.aktechvault.com/9.162.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                controls
+                className="w-full h-auto block"
+              />
+            </div>
           </div>
 
 
