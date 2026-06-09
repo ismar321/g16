@@ -618,6 +618,14 @@ const Index = () => {
                   },
                 ).catch(() => {});
 
+                if (typeof window !== "undefined" && typeof window.fbq === "function") {
+                  window.fbq("track", "Lead", {
+                    content_name: "Secondary Mini Screen 9.16",
+                    currency: "DZD",
+                    value: totalPrice,
+                  });
+                }
+
                 navigate("/thank-you");
               }}
             >
